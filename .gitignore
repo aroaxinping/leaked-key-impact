@@ -1,0 +1,45 @@
+# Virtual environments
+.venv/
+venv/
+
+# Byte-compiled / cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Packaging
+*.egg-info/
+build/
+dist/
+
+# Environment / secrets
+.env
+
+# Fleet registry — contains live canary token IDs (secrets)
+data/raw/fleet_registry.csv
+
+# Gmail ingestion — OAuth secrets and fetched raw bodies (never commit)
+credentials.json
+token.json
+data/raw/emails_cache/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Testing
+.pytest_cache/
+.ruff_cache/
+
+# OS
+.DS_Store
+logs/
+
+# A/B experiment — built repos hold injected live keys at deploy time
+experiment/build/
+
+# ...but DO commit the experiment template .env files — placeholders / documented
+# fakes only, no real secrets, and needed for build_repos.py to work.
+!experiment/templates/env/.env
+!experiment/templates/control/.env
+data/processed/deep_osint_cache.json

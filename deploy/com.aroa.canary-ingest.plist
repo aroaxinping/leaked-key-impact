@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+ "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.aroa.canary-ingest</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/aroaxinping/canary-token-analytics/scripts/run_ingest.sh</string>
+    </array>
+
+    <!-- Run every 6 hours (21600 s). launchd also fires a missed run on wake. -->
+    <key>StartInterval</key>
+    <integer>21600</integer>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/aroaxinping/canary-token-analytics</string>
+
+    <key>StandardOutPath</key>
+    <string>/Users/aroaxinping/canary-token-analytics/logs/launchd.out.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/aroaxinping/canary-token-analytics/logs/launchd.err.log</string>
+
+    <!-- Don't run immediately at load; wait for the first interval. -->
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>

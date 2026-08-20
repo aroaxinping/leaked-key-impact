@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+ "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.aroa.canary-notebook</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/aroaxinping/canary-token-analytics/scripts/refresh_notebook.sh</string>
+    </array>
+
+    <!-- Every day at 00:05 -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>0</integer>
+        <key>Minute</key>
+        <integer>5</integer>
+    </dict>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/aroaxinping/canary-token-analytics</string>
+    <key>StandardOutPath</key>
+    <string>/Users/aroaxinping/canary-token-analytics/logs/notebook.launchd.out.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/aroaxinping/canary-token-analytics/logs/notebook.launchd.err.log</string>
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>
