@@ -1,0 +1,769 @@
+==============================================================================
+ATTACKER IP INTELLIGENCE — CVE / RCE ANALYSIS
+canary-token-analytics · passive OSINT (ipinfo, ip-api, Shodan InternetDB,
+Shodan CVEDB, whois, reverse DNS). Attribution stops at infrastructure.
+CVSS = severity 0-10 | EPSS = exploitation probability | KEV = CISA
+known-exploited (confirmed exploited in the wild) | RCE = remote code execution.
+==============================================================================
+
+Attacker IPs total: 120 | with exposed CVEs: 5 | unique CVEs: 205 | RCE-class: 30 | KEV: 5
+
+------------------------------------------------------------------------------
+IP: 103.130.61.61   ID  PT. Fiqran Solusindo Mediatama  (AS138079) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY  city=Jakarta
+    rDNS=-  ports=53,80,8081,10000  tags=proxy
+    whois: FASTAMA-ID / PT. Fiqran Solusindo Mediatama / abuse=noc@fastama.net.id
+    attacked: placements=['terraform.tfvars']  actions=['InvokeModel']  events=1
+    >>> CVEs: 186  (Critical>=9: 34)  RCE-class: 26  KEV: 3
+    >>> KEV (ACTIVELY EXPLOITED):
+          CVE-2024-38475  CVSS 9.1  EPSS 100%  Improper escaping of output in mod_rewrite in Apache HTTP Server 2.4.59 and earlier allows
+          CVE-2021-40438  CVSS 9.0  EPSS 100%  A crafted request uri-path can cause mod_proxy to forward the request to an origin server 
+          CVE-2019-0211  CVSS 7.8  EPSS 99%  In Apache HTTP Server 2.4 releases 2.4.17 to 2.4.38, with MPM event, worker or prefork, co
+    >>> RCE-class CVEs (top by CVSS):
+          CVE-2026-29167  CVSS 9.8  EPSS 50%  Use After Free vulnerability in Apache HTTP Server with mod_ldap in per-directory configur
+          CVE-2019-12526  CVSS 9.8  EPSS 97%  An issue was discovered in Squid before 4.9. URN response handling in Squid suffers from a
+          CVE-2026-28780  CVSS 9.8  EPSS 70%  Heap-based Buffer Overflow vulnerability in mod_proxy_ajp of Apache HTTP Server. If mod_pr
+          CVE-2020-11945  CVSS 9.8  EPSS 98%  An issue was discovered in Squid before 5.0.2. A remote attacker can replay a sniffed Dige
+          CVE-2022-23943  CVSS 9.8  EPSS 99%  Out-of-bounds Write vulnerability in mod_sed of Apache HTTP Server allows an attacker to o
+          CVE-2021-44790  CVSS 9.8  EPSS 100%  A carefully crafted request body can cause a buffer overflow in the mod_lua multipart pars
+          CVE-2025-54574  CVSS 9.3  EPSS 98%  Squid is a caching proxy for the Web. In versions 6.3 and below, Squid is vulnerable to a 
+          CVE-2024-38475  CVSS 9.1  EPSS 100%  Improper escaping of output in mod_rewrite in Apache HTTP Server 2.4.59 and earlier allows
+          CVE-2016-4051  CVSS 8.8  EPSS 98%  Buffer overflow in cachemgr.cgi in Squid 2.x, 3.x before 3.5.17, and 4.x before 4.0.9 migh
+          CVE-2023-49288  CVSS 8.6  EPSS 91%  Squid is a caching proxy for the Web supporting HTTP, HTTPS, FTP, and more. Affected versi
+          CVE-2023-46847  CVSS 8.6  EPSS 100%  Squid is vulnerable to a Denial of Service,  where a remote attacker can perform buffer ov
+          CVE-2016-3947  CVSS 8.2  EPSS 98%  Heap-based buffer overflow in the Icmp6::Recv function in icmp/Icmp6.cc in the pinger util
+          ... +14 more RCE-class (see docs/pool_cve_inventory.md)
+------------------------------------------------------------------------------
+IP: 45.66.249.187   US  BlueVPS OU  (AS62005) [FAN-OUT POOL]
+    infra=datacenter VPS  flags=HOSTING  city=Los Angeles
+    rDNS=josephwcarrillo.actor  ports=80,443,554,2345,3128,8181  tags=eol-product,open-dir
+    whois: RIPE-ERX-45-66-0-0 / RIPE Network Coordination Centre / abuse=abuse@ripe.net
+    attacked: placements=['terraform.tfvars']  actions=['InvokeModel']  events=1
+    >>> CVEs: 65  (Critical>=9: 8)  RCE-class: 8  KEV: 2
+    >>> KEV (ACTIVELY EXPLOITED):
+          CVE-2024-38475  CVSS 9.1  EPSS 100%  Improper escaping of output in mod_rewrite in Apache HTTP Server 2.4.59 and earlier allows
+          CVE-2020-11023  CVSS 6.9  EPSS 100%  In jQuery versions greater than or equal to 1.0.3 and before 3.5.0, passing HTML containin
+    >>> RCE-class CVEs (top by CVSS):
+          CVE-2026-29167  CVSS 9.8  EPSS 50%  Use After Free vulnerability in Apache HTTP Server with mod_ldap in per-directory configur
+          CVE-2026-28780  CVSS 9.8  EPSS 70%  Heap-based Buffer Overflow vulnerability in mod_proxy_ajp of Apache HTTP Server. If mod_pr
+          CVE-2024-38475  CVSS 9.1  EPSS 100%  Improper escaping of output in mod_rewrite in Apache HTTP Server 2.4.59 and earlier allows
+          CVE-2026-34356  CVSS 7.5  EPSS 51%  Heap-based Buffer Overflow vulnerability in Apache HTTP Server with malicious backend serv
+          CVE-2013-4365  CVSS 7.5  EPSS 96%  Heap-based buffer overflow in the fcgid_header_bucket_read function in fcgid_bucket.c in t
+          CVE-2026-42536  CVSS 7.5  EPSS 61%  Heap-based Buffer Overflow vulnerability in Apache HTTP Server with mod_xml2enc, xml2Start
+          CVE-2026-34355  CVSS 7.5  EPSS 64%  A buffer overflow in mod_proxy_html in Apache HTTP Server 2.4.67 and earlier allows an att
+          CVE-2026-48913  CVSS 7.3  EPSS 39%  Use After Free vulnerability in Apache HTTP Server module mod_http2 when file handles are 
+------------------------------------------------------------------------------
+IP: 88.150.154.27   GB  IOMART CLOUD SERVICES LIMITED  (AS20860)
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Reading
+    rDNS=-  ports=81,443,992,1080,1194,1935,5555  tags=proxy,vpn
+    whois: IOMARTHOSTING / iomart Hosting Limited / abuse=abuse@redstation.com
+    attacked: placements=['.env']  actions=['GetCallerIdentity']  events=1
+    >>> CVEs: 61  (Critical>=9: 10)  RCE-class: 13  KEV: 0
+    >>> RCE-class CVEs (top by CVSS):
+          CVE-2020-11945  CVSS 9.8  EPSS 98%  An issue was discovered in Squid before 5.0.2. A remote attacker can replay a sniffed Dige
+          CVE-2019-12526  CVSS 9.8  EPSS 97%  An issue was discovered in Squid before 4.9. URN response handling in Squid suffers from a
+          CVE-2025-54574  CVSS 9.3  EPSS 98%  Squid is a caching proxy for the Web. In versions 6.3 and below, Squid is vulnerable to a 
+          CVE-2023-49288  CVSS 8.6  EPSS 91%  Squid is a caching proxy for the Web supporting HTTP, HTTPS, FTP, and more. Affected versi
+          CVE-2023-46847  CVSS 8.6  EPSS 100%  Squid is vulnerable to a Denial of Service,  where a remote attacker can perform buffer ov
+          CVE-2026-33526  CVSS 7.5  EPSS 95%  Squid is a caching proxy for the Web. Prior to version 7.5, due to heap Use-After-Free, Sq
+          CVE-2019-18676  CVSS 7.5  EPSS 95%  An issue was discovered in Squid 3.x and 4.x through 4.8. Due to incorrect input validatio
+          CVE-2026-32748  CVSS 7.5  EPSS 95%  Squid is a caching proxy for the Web. Prior to version 7.5, due to premature release of re
+          CVE-2019-18679  CVSS 7.5  EPSS 99%  An issue was discovered in Squid 2.x, 3.x, and 4.x through 4.8. Due to incorrect data mana
+          CVE-2020-8450  CVSS 7.3  EPSS 99%  An issue was discovered in Squid before 4.10. Due to incorrect buffer management, a remote
+          CVE-2024-37894  CVSS 6.3  EPSS 93%  Squid is a caching proxy for the Web supporting HTTP, HTTPS, FTP, and more. Due to an Out-
+          CVE-2026-50012  CVSS 5.5  EPSS 69%  Squid is a caching proxy for the Web. Prior to 7.6, due to an improper input validation bu
+          ... +1 more RCE-class (see docs/pool_cve_inventory.md)
+------------------------------------------------------------------------------
+IP: 2.26.160.172   CZ  NETGRID HOST LTD  (AS202051)
+    infra=datacenter/hosting  flags=HOSTING  city=Prague
+    rDNS=-  ports=80  tags=eol-product
+    whois: ipxo / NetGrid Host LTD / abuse=<redacted-contact@abuseradar.com>
+    attacked: placements=['.env', 'config.ini', 'terraform.tfvars']  actions=['ListAccountAliases']  events=4
+    >>> CVEs: 2  (Critical>=9: 0)  RCE-class: 0  KEV: 1
+    >>> KEV (ACTIVELY EXPLOITED):
+          CVE-2023-44487  CVSS 7.5  EPSS 100%  The HTTP/2 protocol allows a denial of service (server resource consumption) because reque
+------------------------------------------------------------------------------
+IP: 31.76.31.55   FI  PowerRDP Network LTD  (AS197283)
+    infra=?  flags=-  city=Helsinki
+    rDNS=-  ports=22,80,443,3389  tags=eol-product
+    whois: PowerRDP / PowerRDP Network LTD / abuse=abuse@powerrdp.pro
+    attacked: placements=['.env']  actions=['Converse', 'GetCallerIdentity']  events=3
+    >>> CVEs: 2  (Critical>=9: 0)  RCE-class: 0  KEV: 1
+    >>> KEV (ACTIVELY EXPLOITED):
+          CVE-2023-44487  CVSS 7.5  EPSS 100%  The HTTP/2 protocol allows a denial of service (server resource consumption) because reque
+------------------------------------------------------------------------------
+IP: 45.67.3.40   AL  Keminet SHPK  (AS197706) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Tirana
+    rDNS=-  ports=-  tags=-
+    whois: RIPE-ERX-45-66-0-0 / RIPE Network Coordination Centre / abuse=abuse@ripe.net
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity', 'ListFoundationModels']  events=2
+------------------------------------------------------------------------------
+IP: 181.105.140.159   AR  Telecom Argentina S.A.  (AS7303)
+    infra=residential/ISP  flags=-  city=Necochea
+    rDNS=host159.181-105-140.telecom.net.ar  ports=-  tags=-
+    whois:  / Apolo -Gold-Telecom-Per / abuse=abuse@teco.com.ar
+    attacked: placements=['settings.yaml']  actions=['Converse']  events=2
+------------------------------------------------------------------------------
+IP: 103.75.229.175   BE  HostRoyale Technologies Pvt Ltd  (AS203020) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Brussels
+    rDNS=-  ports=-  tags=-
+    whois: HOSTROYALETECHNOLOGIES-AP / HostRoyale Technologies Pvt Ltd / abuse=support@hostroyale.com
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 87.237.15.238   BE  Dstny BE N.V.  (AS8368) [FAN-OUT POOL]
+    infra=?  flags=-  city=Brussels
+    rDNS=ip-87-237-15-238.reverse.destiny.be  ports=443,9443  tags=-
+    whois: CHLORAGIS / Chloragis N.V / abuse=abuse@dstny.be
+    attacked: placements=['terraform.tfvars']  actions=['ListFoundationModels']  events=1
+------------------------------------------------------------------------------
+IP: 45.38.89.211   BR  Latitude.sh LTDA  (AS262287) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=HOSTING  city=São Paulo
+    rDNS=-  ports=-  tags=-
+    whois: EGN-22 / Subnet Digital LLC / abuse=abuse@egihosting.com
+    attacked: placements=['terraform.tfvars']  actions=['ListFoundationModels']  events=1
+------------------------------------------------------------------------------
+IP: 104.239.35.21   CA  M247 Europe SRL  (AS9009) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Montréal
+    rDNS=-  ports=-  tags=-
+    whois: RIPE / RIPE Network Coordination Centre / abuse=abuse@ripe.net
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 31.57.41.3   CA  M247 Europe SRL  (AS9009) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Montréal
+    rDNS=-  ports=-  tags=-
+    whois: NET-31-57-41-0-24 / Private Customer / abuse=<redacted-contact@abuseradar.com>
+    attacked: placements=['terraform.tfvars']  actions=['ListBuckets']  events=1
+------------------------------------------------------------------------------
+IP: 45.39.5.133   CA  M247 Europe SRL  (AS9009) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Montréal
+    rDNS=-  ports=-  tags=-
+    whois: EGN-22 / Subnet Digital LLC / abuse=abuse@egihosting.com
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 45.39.5.95   CA  M247 Europe SRL  (AS9009) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Montréal
+    rDNS=-  ports=-  tags=-
+    whois: EGN-22 / Subnet Digital LLC / abuse=abuse@egihosting.com
+    attacked: placements=['terraform.tfvars']  actions=['ListUsers']  events=1
+------------------------------------------------------------------------------
+IP: 191.101.121.117   CH  GRUPO PANAGLOBAL 15 S.A  (AS264617) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Zürich
+    rDNS=-  ports=-  tags=-
+    attacked: placements=['terraform.tfvars']  actions=['InvokeModel']  events=1
+------------------------------------------------------------------------------
+IP: 31.10.146.45   CH  Sunrise GmbH  (AS6730)
+    infra=?  flags=-  city=Zürich
+    rDNS=31-10-146-45.cgn.dynamic.upc.ch  ports=-  tags=-
+    whois: CABLECOMMAIN-NET / DHCP Scopes - AFTR / abuse=abuse@sunrise.net
+    attacked: placements=['.env']  actions=['GetAccount']  events=2
+------------------------------------------------------------------------------
+IP: 45.131.95.132   CY  HostRoyale Technologies Pvt Ltd  (AS203020) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Nicosia
+    rDNS=-  ports=-  tags=-
+    whois: RIPE / RIPE Network Coordination Centre / abuse=abuse@ripe.net
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 132.226.202.45   DE  Oracle Corporation  (AS31898)
+    infra=datacenter/hosting  flags=HOSTING  city=Frankfurt am Main
+    rDNS=-  ports=22  tags=cloud
+    whois: OC-260 / Oracle Corporation / abuse=network-contact_ww_grp@oracle.com
+    attacked: placements=['.env']  actions=['GetCallerIdentity']  events=16
+------------------------------------------------------------------------------
+IP: 139.162.165.123   DE  Akamai Connected Cloud  (AS63949)
+    infra=datacenter/hosting  flags=HOSTING  city=Frankfurt am Main
+    rDNS=139-162-165-123.ip.linodeusercontent.com  ports=22  tags=cloud
+    whois: RIPE-ERX-139-162-0-0 / RIPE Network Coordination Centre / abuse=abuse@ripe.net
+    attacked: placements=['.env']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 146.103.40.12   DE  Regxa Company for Information Technology Ltd  (AS215311)
+    infra=datacenter VPS  flags=HOSTING  city=Frankfurt am Main
+    rDNS=-  ports=22,443  tags=self-signed
+    whois: RIPE-ERX-146-100-0-0 / RIPE Network Coordination Centre / abuse=abuse@ripe.net
+    attacked: placements=['.env']  actions=['ListAttachedUserPolicies']  events=2
+------------------------------------------------------------------------------
+IP: 31.56.138.192   DE  Leaseweb Deutschland GmbH  (AS28753) [FAN-OUT POOL]
+    infra=datacenter VPS  flags=PROXY  city=Frankfurt am Main
+    rDNS=-  ports=6264  tags=proxy
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 45.13.237.250   DE  Florian Kolb  (AS58087)
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Frankfurt am Main
+    rDNS=250.237.13.45.in-addr.arpa  ports=22  tags=-
+    whois: RIPE / RIPE Network Coordination Centre / abuse=abuse@ripe.net
+    attacked: placements=['terraform.tfvars']  actions=['Converse', 'GetCallerIdentity']  events=2
+------------------------------------------------------------------------------
+IP: 45.150.177.155   DE  web2objects GmbH  (AS204646) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY  city=Frankfurt am Main
+    rDNS=-  ports=-  tags=-
+    whois: RIPE / RIPE Network Coordination Centre / abuse=abuse@ripe.net
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 82.22.234.108   DE  Leaseweb Deutschland GmbH  (AS28753) [FAN-OUT POOL]
+    infra=datacenter VPS  flags=PROXY  city=Frankfurt am Main
+    rDNS=-  ports=-  tags=-
+    whois: NET-82-22-234-0-24 / Private Customer / abuse=<redacted-contact@abuseradar.com>
+    attacked: placements=['terraform.tfvars']  actions=['ListAttachedUserPolicies']  events=1
+------------------------------------------------------------------------------
+IP: 93.152.221.171   DE  TechTies Inc.  (AS197170)
+    infra=datacenter/hosting  flags=PROXY  city=Frankfurt am Main
+    rDNS=-  ports=2222,3389,5986  tags=-
+    whois: IPv4 / TechTies Inc. / abuse=abuse@tech-ties.net
+    attacked: placements=['.env']  actions=['GetCallerIdentity', 'GetSendQuota']  events=218
+------------------------------------------------------------------------------
+IP: 105.47.246.148   EG  The Egyptian Company for Mobile Services (Mobinil)  (AS37069)
+    infra=residential/mobile  flags=MOBILE  city=Cairo
+    rDNS=-  ports=-  tags=-
+    attacked: placements=['config.ini']  actions=['GetAccount', 'GetCallerIdentity', 'ListStacks', 'PutUserPolicy']  events=6
+------------------------------------------------------------------------------
+IP: 154.137.0.30   EG  The Egyptian Company for Mobile Services (Mobinil)  (AS37069)
+    infra=residential/mobile  flags=MOBILE  city=Giza
+    rDNS=-  ports=-  tags=-
+    attacked: placements=['.env', 'config.ini', 'settings.yaml', 'terraform.tfvars']  actions=['GetCallerIdentity', 'GetSendQuota']  events=17
+------------------------------------------------------------------------------
+IP: 197.57.31.248   EG  TE-AS  (AS8452)
+    infra=?  flags=-  city=Cairo
+    rDNS=-  ports=-  tags=-
+    whois: All-23 / TE Data / abuse=abuse@te.eg
+    attacked: placements=['config.ini', 'settings.yaml']  actions=['GetCallerIdentity', 'GetSendQuota', 'ListFunctions20150331', 'ListRoles']  events=8
+------------------------------------------------------------------------------
+IP: 41.33.240.195   EG  TE-AS  (AS8452)
+    infra=?  flags=-  city=Sharm el-Sheikh
+    rDNS=-  ports=-  tags=-
+    whois: TED-00 / TE Data / abuse=abuse@te.eg
+    attacked: placements=['.env', 'config.ini', 'settings.yaml', 'terraform.tfvars']  actions=['AttachUserPolicy', 'DescribeInstances', 'GetAccount', 'GetCallerIdentity', 'GetSendQuota', 'ListNotebookInstances', 'ListPolicies', 'PutUserPolicy']  events=34
+------------------------------------------------------------------------------
+IP: 82.22.249.134   FI  Oy Creanova Hosting Solutions Ltd.  (AS51765) [FAN-OUT POOL]
+    infra=datacenter VPS  flags=PROXY,HOSTING  city=Helsinki
+    rDNS=-  ports=-  tags=-
+    whois: NET-82-22-249-0-24 / Private Customer / abuse=<redacted-contact@abuseradar.com>
+    attacked: placements=['terraform.tfvars']  actions=['ListUserPolicies']  events=1
+------------------------------------------------------------------------------
+IP: 104.252.196.182   FR  HZ Hosting Ltd  (AS59711) [FAN-OUT POOL]
+    infra=datacenter VPS  flags=PROXY,HOSTING  city=Marseille
+    rDNS=-  ports=-  tags=-
+    whois: EGN-21 / Subnet Digital LLC / abuse=abuse@egihosting.com
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 104.253.219.28   FR  HZ Hosting Ltd  (AS59711) [FAN-OUT POOL]
+    infra=datacenter VPS  flags=PROXY,HOSTING  city=Marseille
+    rDNS=-  ports=-  tags=-
+    whois: EGN-21 / Subnet Digital LLC / abuse=abuse@egihosting.com
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 104.28.196.56   FR  Cloudflare, Inc.  (AS13335)
+    infra=datacenter/hosting  flags=PROXY  city=Strasbourg
+    rDNS=-  ports=-  tags=-
+    whois: CLOUDFLARENET / Cloudflare, Inc. / abuse=abuse@cloudflare.com
+    attacked: placements=['.env']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 104.28.228.56   FR  Cloudflare, Inc.  (AS13335)
+    infra=datacenter/hosting  flags=PROXY  city=Strasbourg
+    rDNS=-  ports=-  tags=-
+    whois: CLOUDFLARENET / Cloudflare, Inc. / abuse=abuse@cloudflare.com
+    attacked: placements=['.env']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 104.28.228.57   FR  Cloudflare, Inc.  (AS13335)
+    infra=datacenter/hosting  flags=PROXY  city=Strasbourg
+    rDNS=-  ports=-  tags=-
+    whois: CLOUDFLARENET / Cloudflare, Inc. / abuse=abuse@cloudflare.com
+    attacked: placements=['.env']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 140.99.197.126   FR  HZ Hosting Ltd  (AS59711) [FAN-OUT POOL]
+    infra=datacenter VPS  flags=HOSTING  city=Marseille
+    rDNS=-  ports=7003  tags=proxy
+    whois: EPICUP-LEGACY-SPACE / EpicUp Holdings Inc / abuse=abuse@ipxo.com
+    attacked: placements=['terraform.tfvars']  actions=['ListFoundationModels']  events=1
+------------------------------------------------------------------------------
+IP: 193.32.126.213   FR  31173 Services AB  (AS39351)
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Paris
+    rDNS=-  ports=-  tags=-
+    whois: NET-31173-193-32-126-0-24 / 31173 Services France / abuse=abuse-cust-fr@31173.se
+    attacked: placements=['.env', 'config.ini', 'settings.yaml']  actions=['GetAccount', 'GetCallerIdentity', 'GetSMSAttributes']  events=9
+------------------------------------------------------------------------------
+IP: 216.173.75.187   FR  Getechbrothers, MB  (AS202044) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=HOSTING  city=Paris
+    rDNS=-  ports=6488  tags=proxy
+    whois: RIPE / RIPE Network Coordination Centre / abuse=abuse@ripe.net
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 45.67.216.15   FR  Contabo GmbH  (AS51167)
+    infra=datacenter VPS  flags=HOSTING  city=Lauterbourg
+    rDNS=vmi3413992.contaboserver.net  ports=22  tags=-
+    whois: RIPE-ERX-45-66-0-0 / RIPE Network Coordination Centre / abuse=abuse@ripe.net
+    attacked: placements=['.env']  actions=['ListEmailIdentities']  events=1
+------------------------------------------------------------------------------
+IP: 46.19.132.62   FR  C'Chartres Innovations Numeriques SEM  (AS39271)
+    infra=?  flags=-  city=Chartres
+    rDNS=62.132.19.46.ripe.regiespfs.net  ports=-  tags=-
+    attacked: placements=['.env']  actions=['Converse']  events=1
+------------------------------------------------------------------------------
+IP: 64.137.57.64   FR  Getechbrothers, MB  (AS202044) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Saint-Denis
+    rDNS=-  ports=-  tags=-
+    whois: RIPE / RIPE Network Coordination Centre / abuse=abuse@ripe.net
+    attacked: placements=['terraform.tfvars']  actions=['ListRoles']  events=1
+------------------------------------------------------------------------------
+IP: 92.157.20.178   FR  Orange S.A.  (AS3215)
+    infra=?  flags=-  city=La Motte-Servolex
+    rDNS=lfbn-gre-1-42-178.w92-157.abo.wanadoo.fr  ports=-  tags=-
+    whois: IP2000-ADSL-BAS / POP GRE / abuse=abuse@orange.fr
+    attacked: placements=['terraform.tfvars']  actions=['GetAccount', 'GetSendQuota']  events=2
+------------------------------------------------------------------------------
+IP: 107.181.148.28   GB  SYN LTD  (AS64080) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=London
+    rDNS=-  ports=-  tags=-
+    whois: RIPE / RIPE Network Coordination Centre / abuse=abuse@ripe.net
+    attacked: placements=['terraform.tfvars']  actions=['ListUsers']  events=1
+------------------------------------------------------------------------------
+IP: 151.245.207.25   GB  British Telecommunications Limited  (AS2856) [FAN-OUT POOL]
+    infra=residential/ISP  flags=-  city=London
+    rDNS=-  ports=-  tags=-
+    whois: NET-151-245-204-0-22 / Private Customer / abuse=<redacted-contact@abuseradar.com>
+    attacked: placements=['terraform.tfvars']  actions=['ListFoundationModels']  events=1
+------------------------------------------------------------------------------
+IP: 155.254.34.219   GB  SYN LTD  (AS64080) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=London
+    rDNS=-  ports=-  tags=-
+    whois: RIPE / RIPE Network Coordination Centre / abuse=abuse@ripe.net
+    attacked: placements=['terraform.tfvars']  actions=['ListBuckets']  events=1
+------------------------------------------------------------------------------
+IP: 176.113.67.230   GB  Leaseweb UK Limited  (AS205544) [FAN-OUT POOL]
+    infra=datacenter VPS  flags=PROXY,HOSTING  city=London
+    rDNS=-  ports=-  tags=-
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 198.105.110.56   GB  SYN LTD  (AS64080) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=HOSTING  city=London
+    rDNS=-  ports=-  tags=-
+    whois: RIPE / RIPE Network Coordination Centre / abuse=abuse@ripe.net
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 31.59.27.55   GB  Leaseweb UK Limited  (AS205544) [FAN-OUT POOL]
+    infra=datacenter VPS  flags=PROXY  city=London
+    rDNS=-  ports=-  tags=-
+    whois: NET-31-59-27-0-24 / Private Customer / abuse=<redacted-contact@abuseradar.com>
+    attacked: placements=['terraform.tfvars']  actions=['GetSendQuota']  events=1
+------------------------------------------------------------------------------
+IP: 45.43.70.99   GB  SYN LTD  (AS64080) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=London
+    rDNS=-  ports=-  tags=-
+    whois: RIPE / RIPE Network Coordination Centre / abuse=abuse@ripe.net
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 45.43.83.84   GB  SYN LTD  (AS64080) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=London
+    rDNS=-  ports=-  tags=-
+    whois: RIPE / RIPE Network Coordination Centre / abuse=abuse@ripe.net
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 89.116.229.201   GB  Hostinger International Limited  (AS47583)
+    infra=datacenter VPS  flags=HOSTING  city=Manchester
+    rDNS=srv1811029.hstgr.cloud  ports=-  tags=-
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 92.112.91.82   GR  Lancom Ltd.  (AS199081) [FAN-OUT POOL]
+    infra=?  flags=-  city=Thessaloníki
+    rDNS=-  ports=-  tags=-
+    whois: NET-92-112-91-0-24 / Private Customer / abuse=<redacted-contact@abuseradar.com>
+    attacked: placements=['terraform.tfvars']  actions=['ListFoundationModels']  events=1
+------------------------------------------------------------------------------
+IP: 103.193.144.223   ID  PT Lintas Jaringan Nusantara  (AS58821) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY  city=Batam
+    rDNS=-  ports=53,80,161,443,2000  tags=-
+    whois: IDNIC-JKNID-ID / PT Jaringan Kabel Nusantara / abuse=admin@jkn.my.id
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 182.4.101.162   ID  PT. Telekomunikasi Selular  (AS23693)
+    infra=residential/mobile  flags=HOSTING,MOBILE  city=Yogyakarta
+    rDNS=-  ports=-  tags=-
+    whois: TELKOMSEL-ID / PT. Telekomunikasi Selular (Telkomsel) Indonesia / abuse=abuse@idnic.net
+    attacked: placements=['.env']  actions=['GetCallerIdentity', 'GetUser']  events=2
+------------------------------------------------------------------------------
+IP: 202.179.188.22   ID  Telemedia Dinamika Sarana, PT  (AS38750)
+    infra=residential/ISP  flags=-  city=Jakarta
+    rDNS=-  ports=22,8291,8728  tags=-
+    whois: TDS-JKT-08 / PT Telemedia Dinamika Sarana / abuse=abuse@tds.net.id
+    attacked: placements=['.env']  actions=['GetServiceQuota', 'ListRoles']  events=2
+------------------------------------------------------------------------------
+IP: 82.25.213.200   IE  Sternforth Ltd. trading as WebWorld  (AS30900) [FAN-OUT POOL]
+    infra=?  flags=-  city=Dublin
+    rDNS=-  ports=-  tags=-
+    whois: NET-82-25-213-0-24 / Private Customer / abuse=<redacted-contact@abuseradar.com>
+    attacked: placements=['terraform.tfvars']  actions=['InvokeModel']  events=1
+------------------------------------------------------------------------------
+IP: 104.239.90.56   IT  M247 Europe SRL  (AS9009) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Figino
+    rDNS=-  ports=-  tags=-
+    whois: RIPE / RIPE Network Coordination Centre / abuse=abuse@ripe.net
+    attacked: placements=['terraform.tfvars']  actions=['ListUsers']  events=1
+------------------------------------------------------------------------------
+IP: 104.239.91.68   IT  M247 Europe SRL  (AS9009) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Figino
+    rDNS=-  ports=-  tags=-
+    whois: RIPE / RIPE Network Coordination Centre / abuse=abuse@ripe.net
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 64.137.83.108   IT  Datacamp Limited  (AS212238) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Milan
+    rDNS=-  ports=-  tags=-
+    whois: RIPE / RIPE Network Coordination Centre / abuse=abuse@ripe.net
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 94.177.49.108   IT  NetJoin srl  (AS64445) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY  city=Milan
+    rDNS=-  ports=-  tags=-
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 218.51.123.96   KR  SK Broadband Co Ltd  (AS9318)
+    infra=residential/ISP  flags=-  city=Seoul
+    rDNS=-  ports=-  tags=-
+    whois: broadNnet / SK Broadband Co Ltd / abuse=<redacted-contact@nic.or.kr>
+    attacked: placements=['.env']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 45.131.103.61   LV  Sia Nano IT  (AS43513) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Riga
+    rDNS=-  ports=-  tags=-
+    whois: RIPE / RIPE Network Coordination Centre / abuse=abuse@ripe.net
+    attacked: placements=['terraform.tfvars']  actions=['GetSendQuota']  events=1
+------------------------------------------------------------------------------
+IP: 89.221.127.172   LV  JSC BALTICOM  (AS24651)
+    infra=?  flags=-  city=Riga
+    rDNS=balticom-127-172.balticom.lv  ports=-  tags=-
+    whois: Net-Balticom / JSC BALTICOM / abuse=abuse@balticom.info
+    attacked: placements=['.env', 'terraform.tfvars']  actions=['Converse', 'GetCallerIdentity']  events=4
+------------------------------------------------------------------------------
+IP: 142.202.254.134   MT  HostRoyale Technologies Pvt Ltd  (AS203020) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Valletta
+    rDNS=-  ports=-  tags=-
+    whois: CUBED-NETWORKS-2 / Bogle Networks LLC / abuse=<redacted-contact@bogle.net>
+    attacked: placements=['terraform.tfvars']  actions=['ListFoundationModels']  events=1
+------------------------------------------------------------------------------
+IP: 185.48.52.13   MX  Latitude.sh  (AS396356) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY  city=Mexico City
+    rDNS=-  ports=-  tags=-
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 104.238.9.59   NL  Getechbrothers, MB  (AS202044) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Amsterdam
+    rDNS=-  ports=-  tags=-
+    whois: RIPE / RIPE Network Coordination Centre / abuse=abuse@ripe.net
+    attacked: placements=['terraform.tfvars']  actions=['ListUserPolicies']  events=1
+------------------------------------------------------------------------------
+IP: 152.233.13.145   NL  Datacamp Limited  (AS60068)
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Amsterdam
+    rDNS=unn-152-233-13-145.datapacket.com  ports=-  tags=-
+    whois: RIPE / RIPE Network Coordination Centre / abuse=abuse@ripe.net
+    attacked: placements=['.env']  actions=['GetCallerIdentity', 'InvokeModel']  events=2
+------------------------------------------------------------------------------
+IP: 45.148.10.150   NL  TECHOFF SRV LIMITED  (AS48090)
+    infra=datacenter/hosting  flags=HOSTING  city=Amsterdam
+    rDNS=-  ports=22,443  tags=-
+    whois: RIPE / RIPE Network Coordination Centre / abuse=abuse@ripe.net
+    attacked: placements=['.env']  actions=['GetSendQuota', 'ListFoundationModels', 'ListInferenceProfiles']  events=7
+------------------------------------------------------------------------------
+IP: 51.83.143.35   PL  OVH SAS  (AS16276)
+    infra=cloud  flags=HOSTING  city=Warsaw
+    rDNS=mail.nexascode.com  ports=22,80,443,587,8001,8012,8085  tags=-
+    whois: waw1-sdagg18a-b-n93-1-2 / OVH Sp. z o. o. / abuse=abuse@ovh.net
+    attacked: placements=['config.ini']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 181.214.37.90   PT  Datacamp Limited  (AS212238) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Lisbon
+    rDNS=-  ports=-  tags=-
+    attacked: placements=['terraform.tfvars']  actions=['ListAttachedUserPolicies']  events=1
+------------------------------------------------------------------------------
+IP: 181.214.6.149   PT  Datacamp Limited  (AS212238) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Lisbon
+    rDNS=-  ports=-  tags=-
+    attacked: placements=['terraform.tfvars']  actions=['ListAttachedUserPolicies']  events=1
+------------------------------------------------------------------------------
+IP: 84.247.60.99   PT  HostRoyale Technologies Pvt Ltd  (AS44144) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Lisbon
+    rDNS=-  ports=-  tags=-
+    attacked: placements=['terraform.tfvars']  actions=['ListBuckets']  events=1
+------------------------------------------------------------------------------
+IP: 38.225.15.72   SE  Internetport Sweden AB  (AS49770) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY  city=Stockholm
+    rDNS=-  ports=-  tags=-
+    whois: COGENT-A / Cogent Communications, LLC / abuse=abuse@cogentco.com
+    attacked: placements=['terraform.tfvars']  actions=['ListFoundationModels']  events=1
+------------------------------------------------------------------------------
+IP: 92.113.231.202   SG  Latitude.sh  (AS396356) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY  city=Singapore
+    rDNS=-  ports=-  tags=-
+    whois: NET-92-113-231-0-24 / Private Customer / abuse=<redacted-contact@abuseradar.com>
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 82.24.242.18   SI  HostRoyale Technologies Pvt Ltd  (AS203020) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Ljubljana
+    rDNS=-  ports=-  tags=-
+    whois: NET-82-24-242-0-24 / Private Customer / abuse=<redacted-contact@abuseradar.com>
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 82.25.242.55   SI  HostRoyale Technologies Pvt Ltd  (AS203020) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Ljubljana
+    rDNS=-  ports=-  tags=-
+    whois: NET-82-25-242-0-24 / Private Customer / abuse=<redacted-contact@abuseradar.com>
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 82.29.233.116   SK  Datacamp Limited  (AS212238) [FAN-OUT POOL]
+    infra=?  flags=-  city=Bratislava
+    rDNS=-  ports=-  tags=-
+    whois: NET-82-29-233-0-24 / Private Customer / abuse=<redacted-contact@abuseradar.com>
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 157.85.97.242   TH  Siamdata Communication Co.,Ltd.  (AS56309) [FAN-OUT POOL]
+    infra=?  flags=-  city=Bangkok
+    rDNS=-  ports=22,80,443,2082,8888  tags=-
+    whois: APNIC-ERX-157-85-0-0 / Asia Pacific Network Information Centre / abuse=<redacted-contact@apnic.net>
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 203.150.113.244   TH  Internet Thailand Company Limited  (AS4618) [FAN-OUT POOL]
+    infra=?  flags=-  city=Bangkok
+    rDNS=244.113.150.203.sta.inet.co.th  ports=-  tags=-
+    whois: INET-IBB-TH / INEXT Broadband Company Limited / abuse=<redacted-contact@inet.co.th>
+    attacked: placements=['terraform.tfvars']  actions=['InvokeModel']  events=1
+------------------------------------------------------------------------------
+IP: 64.51.234.158   TR  Datacamp Limited  (AS212238) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY  city=Istanbul
+    rDNS=-  ports=-  tags=-
+    whois: MEGAPATH-BLK-16 / GTT Americas, LLC / abuse=abuse@gtt.net
+    attacked: placements=['terraform.tfvars']  actions=['ListBuckets']  events=1
+------------------------------------------------------------------------------
+IP: 82.27.233.49   UA  Virtual Systems LLC  (AS30860) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY  city=Kyiv
+    rDNS=-  ports=-  tags=-
+    whois: NET-82-27-233-0-24 / Private Customer / abuse=<redacted-contact@abuseradar.com>
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 104.224.90.91   US  Colocation America Corporation  (AS21769) [FAN-OUT POOL]
+    infra=datacenter VPS  flags=HOSTING  city=Los Angeles
+    rDNS=104.224.90.91.colocationamerica.com  ports=-  tags=-
+    whois: CAC-BLOCK10 / Colocation America Corporation / abuse=Abuse@colocationamerica.com
+    attacked: placements=['terraform.tfvars']  actions=['InvokeModel']  events=1
+------------------------------------------------------------------------------
+IP: 142.147.128.97   US  NTT America, Inc.  (AS2914) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Ashburn
+    rDNS=-  ports=-  tags=-
+    whois: WEB2OBJECTS-08 / Web2Objects LLC / abuse=abuse@web2objects.com
+    attacked: placements=['terraform.tfvars']  actions=['ListUsers']  events=1
+------------------------------------------------------------------------------
+IP: 152.232.100.239   US  B2 Net Solutions Inc.  (AS55286) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Los Angeles
+    rDNS=-  ports=9333  tags=proxy
+    whois: BNS-34 / B2 Net Solutions Inc. / abuse=abuse-system@servermania.com
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 154.12.141.113   US  Cogent Communications, LLC  (AS174) [FAN-OUT POOL]
+    infra=residential/ISP  flags=PROXY  city=Fort Worth
+    rDNS=-  ports=-  tags=-
+    whois: NET-154-12-0-0 / Cogent Communications, LLC / abuse=abuse@cogentco.com
+    attacked: placements=['terraform.tfvars']  actions=['ListFoundationModels']  events=1
+------------------------------------------------------------------------------
+IP: 154.21.154.28   US  Cogent Communications, LLC  (AS174) [FAN-OUT POOL]
+    infra=residential/ISP  flags=PROXY  city=Fort Worth
+    rDNS=-  ports=-  tags=-
+    whois: NET-154-21-0-0 / Cogent Communications, LLC / abuse=abuse@cogentco.com
+    attacked: placements=['terraform.tfvars']  actions=['ListUserPolicies']  events=1
+------------------------------------------------------------------------------
+IP: 172.121.139.119   US  EGIHosting  (AS18779) [FAN-OUT POOL]
+    infra=datacenter VPS  flags=PROXY,HOSTING  city=Santa Clara
+    rDNS=-  ports=-  tags=-
+    whois: EGN-23 / EGIHosting / abuse=abuse@egihosting.com
+    attacked: placements=['terraform.tfvars']  actions=['ListFoundationModels']  events=1
+------------------------------------------------------------------------------
+IP: 172.56.14.182   US  T-Mobile USA, Inc.  (AS21928)
+    infra=residential/mobile  flags=MOBILE  city=Sacramento
+    rDNS=-  ports=-  tags=-
+    whois: TMO9 / T-Mobile USA, Inc. / abuse=abuse@t-mobile.com
+    attacked: placements=['.env']  actions=['DescribeSeverityLevels']  events=1
+------------------------------------------------------------------------------
+IP: 172.56.198.175   US  T-Mobile USA, Inc.  (AS21928)
+    infra=residential/mobile  flags=MOBILE  city=Boston
+    rDNS=-  ports=-  tags=-
+    whois: TMO9 / T-Mobile USA, Inc. / abuse=abuse@t-mobile.com
+    attacked: placements=['.env']  actions=['CreateUser']  events=1
+------------------------------------------------------------------------------
+IP: 172.58.243.229   US  T-Mobile USA, Inc.  (AS21928)
+    infra=residential/mobile  flags=MOBILE  city=Baltimore
+    rDNS=-  ports=-  tags=-
+    whois: TMO9 / T-Mobile USA, Inc. / abuse=abuse@t-mobile.com
+    attacked: placements=['.env']  actions=['InvokeModel']  events=2
+------------------------------------------------------------------------------
+IP: 173.211.69.215   US  Hype Enterprises  (AS13332) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Santa Monica
+    rDNS=-  ports=-  tags=-
+    whois: CAC-BLOCK7 / Colocation America Corporation / abuse=Abuse@colocationamerica.com
+    attacked: placements=['terraform.tfvars']  actions=['GetSendQuota']  events=1
+------------------------------------------------------------------------------
+IP: 173.239.211.245   US  F.N.S. HOLDINGS LIMITED  (AS206092)
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=New York City
+    rDNS=mail2.cmigroupe.com  ports=-  tags=-
+    whois: LOGICWEB / LogicWeb Inc. / abuse=abuse@logicweb.com
+    attacked: placements=['.env']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 185.216.105.134   US  Ace Data Centers, Inc.  (AS11798) [FAN-OUT POOL]
+    infra=datacenter VPS  flags=HOSTING  city=Orem
+    rDNS=-  ports=-  tags=-
+    whois: US-ACEDATACENTER-20170804 / Ace Data Centers II, LLC / abuse=abuse@acedatacenter.com
+    attacked: placements=['terraform.tfvars']  actions=['ListFoundationModels']  events=1
+------------------------------------------------------------------------------
+IP: 191.96.254.62   US  Leaseweb USA, Inc.  (AS396190) [FAN-OUT POOL]
+    infra=datacenter VPS  flags=HOSTING  city=Seattle
+    rDNS=-  ports=-  tags=-
+    attacked: placements=['terraform.tfvars']  actions=['ListBuckets']  events=1
+------------------------------------------------------------------------------
+IP: 192.186.185.83   US  B2 Net Solutions Inc.  (AS55286) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Los Angeles
+    rDNS=sti10n-car-83.stillagrcar.com  ports=-  tags=-
+    whois: B2NETSOLUTIONS / B2 Net Solutions Inc. / abuse=abuse-system@servermania.com
+    attacked: placements=['terraform.tfvars']  actions=['ListBuckets', 'ListFoundationModels']  events=2
+------------------------------------------------------------------------------
+IP: 192.210.132.27   US  HostPapa  (AS36352) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Buffalo
+    rDNS=192-210-132-27-host.colocrossing.com  ports=-  tags=-
+    whois: CC-11 / HostPapa / abuse=<redacted-contact@hostpapa.com>
+    attacked: placements=['terraform.tfvars']  actions=['InvokeModel']  events=1
+------------------------------------------------------------------------------
+IP: 192.241.104.43   US  B2 Net Solutions Inc.  (AS55286) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Los Angeles
+    rDNS=hosting.from.limeisp.com  ports=8137  tags=proxy
+    whois: B2NETSOLUTIONS / B2 Net Solutions Inc. / abuse=abuse-system@servermania.com
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 192.241.94.126   US  B2 Net Solutions Inc.  (AS55286) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=Los Angeles
+    rDNS=pda.intelligentmenscompanies5.com  ports=-  tags=-
+    whois: B2NETSOLUTIONS / B2 Net Solutions Inc. / abuse=abuse-system@servermania.com
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 193.25.215.182   US  ReadyDedis, LLC  (AS397966)
+    infra=datacenter/hosting  flags=PROXY  city=Los Angeles
+    rDNS=182.215.25.193.in-addr.arpa  ports=80,443,22222  tags=-
+    whois: READYDEDIS / READYDEDIS / abuse=<redacted-contact@gmail.com>
+    attacked: placements=['.env']  actions=['ListFoundationModels']  events=1
+------------------------------------------------------------------------------
+IP: 198.44.58.206   US  HostPapa  (AS36352) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=HOSTING  city=Los Angeles
+    rDNS=-  ports=-  tags=-
+    whois: HOSTWINDS-17-4 / HostPapa / abuse=<redacted-contact@hostpapa.com>
+    attacked: placements=['terraform.tfvars']  actions=['InvokeModel', 'ListSecrets']  events=2
+------------------------------------------------------------------------------
+IP: 213.169.228.69   US  FDCservers.net  (AS30058) [FAN-OUT POOL]
+    infra=datacenter VPS  flags=HOSTING  city=Leesburg
+    rDNS=213-169-228-69.easynet.nl  ports=-  tags=-
+    attacked: placements=['terraform.tfvars']  actions=['ListUserPolicies']  events=1
+------------------------------------------------------------------------------
+IP: 216.73.160.202   US  F.N.S. HOLDINGS LIMITED  (AS206092)
+    infra=datacenter/hosting  flags=PROXY  city=New York City
+    rDNS=-  ports=-  tags=-
+    whois: BANDITO-NETWORKS-US / Bandito Networks, Inc / abuse=abuse@bandito.net
+    attacked: placements=['.env']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 216.74.114.166   US  Hype Enterprises  (AS13332) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY  city=Los Angeles
+    rDNS=-  ports=-  tags=-
+    whois: CAC-BLOCK13 / Colocation America Corporation / abuse=Abuse@colocationamerica.com
+    attacked: placements=['terraform.tfvars']  actions=['Converse', 'GetCallerIdentity']  events=2
+------------------------------------------------------------------------------
+IP: 216.74.115.247   US  Hype Enterprises  (AS13332) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=HOSTING  city=Los Angeles
+    rDNS=-  ports=-  tags=-
+    whois: CAC-BLOCK13 / Colocation America Corporation / abuse=Abuse@colocationamerica.com
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 23.27.196.84   US  Psychz Networks  (AS40676) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=HOSTING  city=Centreville
+    rDNS=23-27-196-84.ips.acedatacenter.com  ports=-  tags=-
+    whois: ADCIL / Ace Data Centers II, L.L.C. / abuse=<redacted-contact@acedatacenter.com>
+    attacked: placements=['terraform.tfvars']  actions=['InvokeModel']  events=1
+------------------------------------------------------------------------------
+IP: 34.173.24.24   US  Google LLC  (AS396982)
+    infra=cloud  flags=HOSTING  city=Council Bluffs
+    rDNS=24.24.173.34.bc.googleusercontent.com  ports=-  tags=-
+    whois: GOOGL-2 / Google LLC / abuse=<redacted-contact@google.com>
+    attacked: placements=['.env']  actions=['GetCallerIdentity', 'GetRegions', 'GetSendQuota']  events=3
+------------------------------------------------------------------------------
+IP: 45.127.248.186   US  Colocation America Corporation  (AS21769) [FAN-OUT POOL]
+    infra=datacenter VPS  flags=PROXY,HOSTING  city=Los Angeles
+    rDNS=186.248.127.45-ns1.colocationamerica.com  ports=-  tags=-
+    whois: RIPE / RIPE Network Coordination Centre / abuse=abuse@ripe.net
+    attacked: placements=['terraform.tfvars']  actions=['InvokeModel']  events=1
+------------------------------------------------------------------------------
+IP: 45.56.115.32   US  Akamai Connected Cloud  (AS63949)
+    infra=datacenter/hosting  flags=HOSTING  city=Atlanta
+    rDNS=45-56-115-32.ip.linodeusercontent.com  ports=22  tags=cloud
+    whois: LINODE-US / Akamai Technologies, Inc. / abuse=abuse@akamai.com
+    attacked: placements=['terraform.tfvars']  actions=['GetAccount', 'GetCallerIdentity', 'GetSendQuota', 'ListTopics']  events=5
+------------------------------------------------------------------------------
+IP: 45.61.100.168   US  HostRoyale LLC  (AS46516) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=HOSTING  city=Leesburg
+    rDNS=ip-45-61-100-168.fibre.fibrestream.ca  ports=-  tags=-
+    whois: WEB2OBJECTS-07 / Web2Objects LLC / abuse=abuse@web2objects.com
+    attacked: placements=['terraform.tfvars']  actions=['ListUserPolicies']  events=1
+------------------------------------------------------------------------------
+IP: 46.202.78.247   US  Leaseweb USA, Inc.  (AS27411) [FAN-OUT POOL]
+    infra=datacenter VPS  flags=-  city=Chicago
+    rDNS=-  ports=-  tags=-
+    whois: NET-46-202-78-0-24 / Private Customer / abuse=<redacted-contact@abuseradar.com>
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 47.85.164.151   US  Alibaba (US) Technology Co., Ltd.  (AS45102)
+    infra=datacenter/hosting  flags=HOSTING  city=Virginia Beach
+    rDNS=-  ports=-  tags=-
+    whois: AL-3 / Alibaba Cloud LLC / abuse=abuse@alibaba-inc.com
+    attacked: placements=['.env']  actions=['DescribeInstances', 'GetAccountPasswordPolicy', 'GetCallerIdentity']  events=3
+------------------------------------------------------------------------------
+IP: 63.135.161.8   US  F.N.S. HOLDINGS LIMITED  (AS206092)
+    infra=datacenter/hosting  flags=PROXY,HOSTING  city=New York City
+    rDNS=-  ports=-  tags=-
+    whois: RL-861 / Rockion LLC / abuse=<redacted-contact@rockionllc.com>
+    attacked: placements=['.env']  actions=['InvokeModel']  events=1
+------------------------------------------------------------------------------
+IP: 75.62.233.103   US  AT&T Enterprises, LLC  (AS7018)
+    infra=residential/mobile  flags=-  city=Lawton
+    rDNS=-  ports=-  tags=-
+    whois: SBCIS-SBIS-6BLK / AT&T Enterprises, LLC / abuse=abuse@att.net
+    attacked: placements=['config.ini']  actions=['Converse']  events=2
+------------------------------------------------------------------------------
+IP: 81.31.232.169   US  WAP.AC LLC  (AS401443)
+    infra=?  flags=-  city=Los Angeles
+    rDNS=-  ports=22  tags=-
+    whois: IPXO / Private Customer / abuse=<redacted-contact@abuseradar.com>
+    attacked: placements=['.env']  actions=['InvokeModel']  events=3
+------------------------------------------------------------------------------
+IP: 82.24.212.241   US  Shock Hosting LLC  (AS395092) [FAN-OUT POOL]
+    infra=datacenter VPS  flags=PROXY,HOSTING  city=New York City
+    rDNS=-  ports=-  tags=-
+    whois: NET-82-24-212-0-24 / Private Customer / abuse=<redacted-contact@abuseradar.com>
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 99.63.197.17   US  AT&T Enterprises, LLC  (AS7018)
+    infra=residential/mobile  flags=MOBILE  city=Reston
+    rDNS=-  ports=-  tags=-
+    whois: SBCIS-SBIS / AT&T Enterprises, LLC / abuse=abuse@att.net
+    attacked: placements=['.env']  actions=['GetAccount']  events=1
+------------------------------------------------------------------------------
+IP: 99.89.81.59   US  AT&T Enterprises, LLC  (AS7018)
+    infra=residential/mobile  flags=MOBILE  city=Lansing
+    rDNS=-  ports=-  tags=-
+    whois: SBCIS-SBIS / AT&T Enterprises, LLC / abuse=abuse@att.net
+    attacked: placements=['.env']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 102.212.90.135   ZA  Lexistar Alliance Ltd.  (AS329225) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY  city=Johannesburg
+    rDNS=-  ports=-  tags=-
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 82.22.245.103   ZA  Xneelo (Pty) Ltd  (AS37153) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY  city=Johannesburg
+    rDNS=-  ports=-  tags=-
+    whois: NET-82-22-245-0-24 / Private Customer / abuse=<redacted-contact@abuseradar.com>
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
+IP: 82.29.245.35   ZA  Xneelo (Pty) Ltd  (AS37153) [FAN-OUT POOL]
+    infra=datacenter/hosting  flags=PROXY  city=Johannesburg
+    rDNS=-  ports=-  tags=-
+    whois: NET-82-29-245-0-24 / Private Customer / abuse=<redacted-contact@abuseradar.com>
+    attacked: placements=['terraform.tfvars']  actions=['GetCallerIdentity']  events=1
+------------------------------------------------------------------------------
