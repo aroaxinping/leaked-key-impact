@@ -1,0 +1,39 @@
+name: deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      AWS_REGION: eu-west-1
+      AWS_ACCESS_KEY_ID: __CANARY_ACCESS_KEY_ID__
+      AWS_SECRET_ACCESS_KEY: __CANARY_SECRET_ACCESS_KEY__
+      ECR_REPOSITORY: churn-model-service
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests
+        run: python -m pytest -q
+
+      - name: Build image
+        run: docker build -t "$ECR_REPOSITORY:$GITHUB_SHA" .
+
+      - name: Push and roll out
+        run: |
+          aws ecr get-login-password --region "$AWS_REGION" \
+            | docker login --username AWS --password-stdin "$ECR_REGISTRY"
+          docker push "$ECR_REPOSITORY:$GITHUB_SHA"
+          aws ecs update-service --cluster prod --service churn-model --force-new-deployment

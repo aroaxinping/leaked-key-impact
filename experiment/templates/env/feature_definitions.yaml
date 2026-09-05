@@ -1,0 +1,14 @@
+groups:
+  user_activity:
+    entity: user_id
+    expected_entities: 41200
+    features:
+      - sessions_7d
+      - avg_order_value_30d
+      - days_since_last_visit
+  product_popularity:
+    entity: product_id
+    expected_entities: 8800
+    features:
+      - views_24h
+      - add_to_cart_rate_7d
