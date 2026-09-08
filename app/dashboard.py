@@ -85,16 +85,16 @@ st.markdown(
         text-transform: uppercase;
         letter-spacing: 0.1em;
     }
-    h2, h3 { color: #8899aa !important; font-weight: 400 !important; }
+    h2, h3 { color: #ffffff !important; font-weight: 400 !important; }
     .stCaption { color: #3a4555 !important; }
     .story-block {
-        color: #5a6a7a;
+        color: #e0e0e0;
         font-size: 0.85rem;
         line-height: 1.6;
         max-width: 800px;
         margin-bottom: 1rem;
     }
-    .story-block strong { color: #8899aa; }
+    .story-block strong { color: #ffffff; }
     hr { border-color: #111820 !important; }
     </style>
     """,

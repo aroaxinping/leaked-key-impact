@@ -2,7 +2,7 @@
 
 Five fake AWS credentials were deliberately planted across public GitHub repositories. They grant zero access — their only purpose is to fire an alert the moment someone tries to use them. This project captures, enriches, classifies, and prices **every real intrusion attempt** they recorded.
 
-**1 301 events. 210 attacker IPs. 46 countries. 35 days. $6,187/day in potential damage if any key had been real.**
+**1 301 events. 210 attacker IPs. 46 countries. 33 days. $6,187/day in potential damage if any key had been real.**
 
 ## What would it cost?
 
@@ -34,7 +34,7 @@ See [`docs/cost_impact.md`](docs/cost_impact.md) for the full methodology and pr
 - **A leaked key is hit within minutes.** Fresh placements begin drawing automated traffic almost immediately after exposure.
 - **LLMjacking is the primary objective.** 219 events target AWS Bedrock — hijacking the account to run AI at the victim's expense.
 - **One coordinated operator dominates `terraform.tfvars` traffic.** 53 IPs across 23 countries, identical software build, 48/53 on hosting/proxy networks. A single operator behind a rotating proxy pool, not independent attackers.
-- **Placement matters.** `.env` draws volume (699 events), `terraform.tfvars` draws depth (465 events, concentrated kill-chain penetration).
+- **Placement matters.** `.env` draws volume (696 events), `terraform.tfvars` draws depth (465 events, concentrated kill-chain penetration).
 - **Privilege escalation attempts observed.** `PutUserPolicy` and `CreateUser` show hands-on operators trying to create backdoors, not just automated scanners.
 
 ## MITRE ATT&CK
@@ -96,7 +96,7 @@ The fleet finding — that infrastructure-flavored keys draw faster, deeper atta
 ## Repository structure
 
 ```
-canary-token-analytics/
+leaked-key-impact/
 ├── src/canary_token_analytics/
 │   ├── ingest.py        # parse alert emails -> structured events
 │   ├── enrich.py        # geo / ASN / infra type / proxy flags / GreyNoise
