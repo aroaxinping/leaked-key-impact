@@ -485,6 +485,124 @@ fig_events.update_traces(textposition="outside")
 st.plotly_chart(fig_events, use_container_width=True)
 
 # ---------------------------------------------------------------------------
+# 7. Cost Impact — what this would cost if the keys were real
+# ---------------------------------------------------------------------------
+
+st.divider()
+st.markdown("### cost impact")
+st.markdown(
+    '<div class="story-block">'
+    "If these keys had been real, what would the damage look like? "
+    "These estimates use <strong>public AWS pricing</strong> and conservative assumptions "
+    "about what each observed action would have consumed. "
+    "The numbers below are <strong>per-incident minimums</strong> — a real compromise "
+    "runs continuously until detected, multiplying the cost by hours or days."
+    "</div>",
+    unsafe_allow_html=True,
+)
+
+COST_MODEL = {
+    "bedrock_llmjacking": {
+        "label": "Bedrock LLMjacking",
+        "events": ["InvokeModel", "InvokeModelWithResponseStream", "Converse", "ConverseStream"],
+        "desc": "Each call runs an AI model at victim's expense",
+        "unit_cost": 0.016,
+        "unit_label": "per call (Claude Haiku, ~1K tokens)",
+        "burst_per_hour": 500,
+        "burst_label": "calls/hour (automated)",
+        "daily_cost": 192.0,
+    },
+    "ec2_cryptomining": {
+        "label": "EC2 cryptomining",
+        "events": ["RunInstances"],
+        "desc": "Launch GPU instances for mining",
+        "unit_cost": 24.48,
+        "unit_label": "per hour (p3.16xlarge)",
+        "burst_per_hour": 10,
+        "burst_label": "instances",
+        "daily_cost": 5_875.0,
+    },
+    "ses_phishing": {
+        "label": "SES email phishing",
+        "events": ["GetSendQuota", "ListEmailIdentities"],
+        "desc": "Send phishing using Amazon's email reputation",
+        "unit_cost": 0.10,
+        "unit_label": "per 1,000 emails",
+        "burst_per_hour": 50_000,
+        "burst_label": "emails/hour (SES default)",
+        "daily_cost": 120.0,
+    },
+    "iam_backdoor": {
+        "label": "IAM persistence",
+        "events": ["CreateUser", "PutUserPolicy", "AddUserToGroup"],
+        "desc": "Create backdoor user that survives key revocation",
+        "unit_cost": None,
+        "unit_label": "no direct cost",
+        "burst_per_hour": None,
+        "burst_label": "",
+        "daily_cost": None,
+    },
+}
+
+cost_rows = []
+total_daily = 0.0
+
+for key, model in COST_MODEL.items():
+    n = attacker_df[attacker_df["event_name"].isin(model["events"])].shape[0]
+    if n == 0:
+        continue
+    cost_rows.append({
+        "Attack vector": model["label"],
+        "Events observed": n,
+        "Unit cost": model["unit_label"],
+        "Sustained daily cost": f"${model['daily_cost']:,.0f}" if model["daily_cost"] else "full account takeover",
+    })
+    if model["daily_cost"]:
+        total_daily += model["daily_cost"]
+
+cost_df = pd.DataFrame(cost_rows)
+
+col_table, col_total = st.columns([3, 1])
+
+with col_table:
+    st.dataframe(
+        cost_df,
+        use_container_width=True,
+        hide_index=True,
+    )
+
+with col_total:
+    st.markdown(
+        '<div class="metric-card" style="margin-top: 0.5rem;">'
+        f'<div class="value" style="color: #d94f4f;">${total_daily:,.0f}</div>'
+        '<div class="label">potential daily burn</div>'
+        "</div>",
+        unsafe_allow_html=True,
+    )
+    st.markdown(
+        '<div class="metric-card" style="margin-top: 0.8rem;">'
+        f'<div class="value" style="color: #d94f4f; font-size: 1.5rem;">${total_daily * 30:,.0f}</div>'
+        '<div class="label">monthly if undetected</div>'
+        "</div>",
+        unsafe_allow_html=True,
+    )
+
+st.markdown(
+    '<div class="story-block">'
+    "<strong>The real cost of a leaked key isn't the API call — it's the time to detection.</strong> "
+    "AWS quarantined these keys in ~17 minutes. Without that safety net, "
+    f"a single compromised key burns <strong>${total_daily:,.0f}/day</strong> in compute alone. "
+    "A company that takes 24 hours to notice loses "
+    f"<strong>${total_daily:,.0f}</strong>. A company that takes a week loses "
+    f"<strong>${total_daily * 7:,.0f}</strong>. "
+    "IAM persistence (<code>CreateUser</code>) is not priced because the cost is "
+    "<strong>total account takeover</strong> — the attacker survives key rotation "
+    "and the bill becomes unlimited."
+    "</div>",
+    unsafe_allow_html=True,
+)
+
+# ---------------------------------------------------------------------------
 # Footer
 # ---------------------------------------------------------------------------
 
