@@ -210,6 +210,101 @@ INTENT_TAXONOMY = {
         "Enumerates EventBridge rules, mapping the account's automation and "
         "event wiring",
     ),
+    "ListAliases": (
+        "reconnaissance",
+        "Enumerates KMS key aliases, mapping the account's encryption keys",
+    ),
+    "DescribeVpcs": (
+        "reconnaissance",
+        "Enumerates VPCs, mapping the account's network topology",
+    ),
+    "ListServices": (
+        "reconnaissance",
+        "Enumerates ECS services, mapping running container workloads to "
+        "hijack or abuse",
+    ),
+    "GetRestApis": (
+        "reconnaissance",
+        "Enumerates API Gateway REST APIs, mapping exposed endpoints to abuse "
+        "or pivot through",
+    ),
+    "DescribeEnvironments": (
+        "reconnaissance",
+        "Enumerates Elastic Beanstalk environments, mapping deployed apps",
+    ),
+    "ListUserPools": (
+        "reconnaissance",
+        "Enumerates Cognito user pools, mapping the account's identity stores",
+    ),
+    "ListIdentityPools": (
+        "reconnaissance",
+        "Enumerates Cognito identity pools, mapping the account's identity "
+        "stores",
+    ),
+    "GetParameter": (
+        "reconnaissance",
+        "Reads an SSM Parameter Store value, hunting for stored secrets or "
+        "config",
+    ),
+    "HeadBucket": (
+        "reconnaissance",
+        "Probes an S3 bucket's existence and access, mapping reachable storage",
+    ),
+    "GetRole": (
+        "reconnaissance",
+        "Reads an IAM role, mapping assumable roles and their permissions",
+    ),
+    "ListGroups": (
+        "reconnaissance",
+        "Enumerates IAM groups, mapping the account's permission structure",
+    ),
+    "ListGroupsForUser": (
+        "reconnaissance",
+        "Enumerates the IAM groups a user belongs to, mapping permission "
+        "inheritance paths",
+    ),
+    "ListJobs": (
+        "reconnaissance",
+        "Enumerates Glue jobs, mapping data pipelines in the account",
+    ),
+    "ListClusters": (
+        "reconnaissance",
+        "Enumerates ECS/EKS clusters, mapping container compute to hijack or "
+        "abuse",
+    ),
+    "ListDevEndpoints": (
+        "reconnaissance",
+        "Enumerates Glue development endpoints, mapping accessible compute",
+    ),
+    "RunInstances": (
+        "resource-abuse",
+        "Launches EC2 instances on the victim's account - compute hijacking "
+        "for cryptomining or other abuse",
+    ),
+    "RunTask": (
+        "resource-abuse",
+        "Runs an ECS task on the victim's account - compute hijacking for "
+        "abuse",
+    ),
+    "CreateFunction20150331": (
+        "persistence",
+        "Creates a Lambda function - a foothold to run code and retain access",
+    ),
+    "CreateStateMachine": (
+        "persistence",
+        "Creates a Step Functions state machine - a foothold to orchestrate "
+        "code execution",
+    ),
+    "AddUserToGroup": (
+        "persistence",
+        "Adds an IAM user to a group - privilege escalation to retain or "
+        "widen access",
+    ),
+    "CreateInstanceProfile": (
+        "persistence",
+        "Creates an IAM instance profile - scaffolding for privilege "
+        "escalation or persistence",
+    ),
     "AttachUserPolicy": (
         "defense",
         "AWS's own automated quarantine attaching a restrictive policy to "

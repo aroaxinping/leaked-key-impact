@@ -70,6 +70,32 @@ MITRE_MAP = {
     "CreateUser": ("Persistence", "T1136.003", "Create Account: Cloud Account"),
     "PutUserPolicy": ("Privilege Escalation", "T1098", "Account Manipulation"),
 
+    # --- More infrastructure / data-store / account discovery ---
+    "ListAliases": ("Discovery", "T1580", "Cloud Infrastructure Discovery"),
+    "ListServices": ("Discovery", "T1580", "Cloud Infrastructure Discovery"),
+    "GetRestApis": ("Discovery", "T1580", "Cloud Infrastructure Discovery"),
+    "DescribeEnvironments": ("Discovery", "T1580", "Cloud Infrastructure Discovery"),
+    "ListJobs": ("Discovery", "T1580", "Cloud Infrastructure Discovery"),
+    "ListClusters": ("Discovery", "T1580", "Cloud Infrastructure Discovery"),
+    "ListDevEndpoints": ("Discovery", "T1580", "Cloud Infrastructure Discovery"),
+    "ListUserPools": ("Discovery", "T1087.004", "Account Discovery: Cloud Account"),
+    "ListIdentityPools": ("Discovery", "T1087.004", "Account Discovery: Cloud Account"),
+    "GetRole": ("Discovery", "T1069.003", "Permission Groups Discovery: Cloud Groups"),
+    "ListGroups": ("Discovery", "T1069.003", "Permission Groups Discovery: Cloud Groups"),
+    "ListGroupsForUser": ("Discovery", "T1069.003", "Permission Groups Discovery: Cloud Groups"),
+    "HeadBucket": ("Discovery", "T1619", "Cloud Storage Object Discovery"),
+    "GetParameter": ("Credential Access", "T1552.005", "Unsecured Credentials: Cloud Instance Metadata / Secrets"),
+
+    # --- Resource hijacking (compute) ---
+    "RunInstances": ("Impact", "T1496", "Resource Hijacking"),
+    "RunTask": ("Impact", "T1496", "Resource Hijacking"),
+
+    # --- Persistence / privilege escalation (more) ---
+    "CreateFunction20150331": ("Persistence", "T1648", "Serverless Execution"),
+    "CreateStateMachine": ("Persistence", "T1648", "Serverless Execution"),
+    "AddUserToGroup": ("Privilege Escalation", "T1098", "Account Manipulation"),
+    "CreateInstanceProfile": ("Privilege Escalation", "T1098", "Account Manipulation"),
+
     # --- AWS-side defense (not attacker techniques) ---
     "AttachUserPolicy": (None, None, "AWS auto-quarantine (defensive, not an ATT&CK technique)"),
     "SNS": (None, None, "AWS-side fraud/leak flag (defensive)"),
