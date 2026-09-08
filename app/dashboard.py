@@ -55,7 +55,7 @@ _ALPHA2_TO_ALPHA3 = {c.alpha_2: c.alpha_3 for c in pycountry.countries}
 # ---------------------------------------------------------------------------
 
 st.set_page_config(
-    page_title="Canary Token Analytics",
+    page_title="Leaked Key Impact",
     page_icon="🍯",
     layout="wide",
 )
@@ -158,7 +158,7 @@ date_max = df["date_utc"].max()
 # Header
 # ---------------------------------------------------------------------------
 
-st.markdown("### canary-token-analytics")
+st.markdown("### leaked-key-impact")
 
 st.markdown(
     '<div class="story-block">'
