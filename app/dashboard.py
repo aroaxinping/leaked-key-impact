@@ -42,7 +42,7 @@ ACCENT = "#4a9eff"
 PLOTLY_LAYOUT = dict(
     paper_bgcolor=DARK_PAPER,
     plot_bgcolor=DARK_BG,
-    font=dict(color=DARK_TEXT, family="JetBrains Mono, SF Mono, Menlo, monospace", size=11),
+    font=dict(color=DARK_TEXT, size=12),
     margin=dict(l=40, r=20, t=40, b=40),
     xaxis=dict(gridcolor=DARK_GRID, zerolinecolor=DARK_GRID),
     yaxis=dict(gridcolor=DARK_GRID, zerolinecolor=DARK_GRID),
@@ -63,7 +63,6 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
     .stApp { background-color: #000000; }
     .block-container { padding-top: 1.5rem; }
     .metric-card {
@@ -77,7 +76,6 @@ st.markdown(
         font-size: 2rem;
         font-weight: 700;
         color: #4a9eff;
-        font-family: 'JetBrains Mono', monospace;
     }
     .metric-card .label {
         font-size: 0.75rem;
@@ -85,16 +83,14 @@ st.markdown(
         margin-top: 0.3rem;
         text-transform: uppercase;
         letter-spacing: 0.1em;
-        font-family: 'JetBrains Mono', monospace;
     }
-    h2, h3 { color: #a0a0a0 !important; font-family: 'JetBrains Mono', monospace !important; font-weight: 400 !important; }
+    h2, h3 { color: #a0a0a0 !important; font-weight: 400 !important; }
     .stCaption { color: #444444 !important; }
     .story-block {
         color: #666666;
         font-size: 0.85rem;
         line-height: 1.6;
         max-width: 800px;
-        font-family: 'JetBrains Mono', monospace;
         margin-bottom: 1rem;
     }
     .story-block strong { color: #a0a0a0; }
@@ -331,7 +327,7 @@ fig_map = px.choropleth(
 fig_map.update_layout(
     paper_bgcolor=DARK_PAPER,
     plot_bgcolor=DARK_BG,
-    font=dict(color=DARK_TEXT, family="JetBrains Mono, monospace", size=11),
+    font=dict(color=DARK_TEXT, size=12),
     margin=dict(l=0, r=0, t=10, b=0),
     geo=dict(
         bgcolor=DARK_BG,
@@ -401,7 +397,7 @@ with col_right2:
     fig_infra.update_layout(
         paper_bgcolor=DARK_PAPER,
         plot_bgcolor=DARK_BG,
-        font=dict(color=DARK_TEXT, family="JetBrains Mono, monospace", size=11),
+        font=dict(color=DARK_TEXT, size=12),
         margin=dict(l=20, r=20, t=40, b=20),
         legend=dict(orientation="h", y=-0.15),
     )
