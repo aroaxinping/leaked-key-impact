@@ -1,6 +1,0 @@
-token_id,repo,placement,access_key_id,canarytoken_id,memo,created_utc
-1,social-metrics-vault,.env,AKIATJB7YR3QJZ2NV45G,88nyum1ozkpiczygq3r9yqdut,AWS key en .env de social-metrics-vault,2026-08-02
-2,homelab-s3-sync,.env,AKIARCY24NXNESHIY6UF,47qvi4w938dm7rfoxy8kanvrw,AWS key en .env (homelab backup sync / s3-backup-cli),2026-08-27
-3,cloud-usage-tracker,config.ini,AKIAWFNFBANQGWWT2IPH,kdc124n6nvnaw3arate53ws3l,AWS key en config.ini (cloud usage tracker),2026-08-27
-4,sensor-data-lake,settings.yaml,AKIAWFNFBANQL3V33XR2,3hr774io317r9u04ae8amq4ka,AWS key en settings.yaml (sensor data lake),2026-08-27
-5,infra-heartbeat,terraform.tfvars,AKIA3CGVKYJOO7QGZLFS,5792dirvqlq9rowicezsid1u4,AWS key en terraform.tfvars (infra heartbeat),2026-08-27

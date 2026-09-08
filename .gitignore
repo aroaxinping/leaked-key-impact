@@ -16,6 +16,9 @@ dist/
 # Environment / secrets
 .env
 
+# Fleet registry — contains live canary token IDs (secrets)
+data/raw/fleet_registry.csv
+
 # Gmail ingestion — OAuth secrets and fetched raw bodies (never commit)
 credentials.json
 token.json
