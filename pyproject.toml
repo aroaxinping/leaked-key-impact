@@ -21,6 +21,11 @@ dev = [
     "matplotlib",
     "ruff",
 ]
+dashboard = [
+    "streamlit",
+    "plotly",
+    "pycountry",
+]
 gmail = [
     "google-api-python-client",
     "google-auth-oauthlib",
