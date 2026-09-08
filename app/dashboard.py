@@ -25,19 +25,20 @@ PHASE_ORDER = [
 ]
 
 PHASE_COLORS = {
-    "validation": "#4a9eff",
-    "reconnaissance": "#36b5a0",
-    "abuse-prep": "#e0a458",
-    "resource-abuse": "#d94f4f",
+    "validation": "#7ba7cc",
+    "reconnaissance": "#4a7fa5",
+    "abuse-prep": "#2d5f8a",
+    "resource-abuse": "#dc2626",
     "persistence": "#9b6fd4",
-    "defense": "#5a7a5a",
+    "defense": "#3a5a3a",
 }
 
 DARK_BG = "#000000"
-DARK_PAPER = "#0a0a0a"
-DARK_GRID = "#1a1a1a"
-DARK_TEXT = "#a0a0a0"
-ACCENT = "#4a9eff"
+DARK_PAPER = "#060a10"
+DARK_GRID = "#111820"
+DARK_TEXT = "#8899aa"
+ACCENT = "#5b8fb9"
+DANGER = "#dc2626"
 
 PLOTLY_LAYOUT = dict(
     paper_bgcolor=DARK_PAPER,
@@ -66,8 +67,8 @@ st.markdown(
     .stApp { background-color: #000000; }
     .block-container { padding-top: 1.5rem; }
     .metric-card {
-        background: #0a0a0a;
-        border: 1px solid #1a1a1a;
+        background: #060a10;
+        border: 1px solid #111820;
         border-radius: 4px;
         padding: 1.4rem 1rem;
         text-align: center;
@@ -75,26 +76,26 @@ st.markdown(
     .metric-card .value {
         font-size: 2rem;
         font-weight: 700;
-        color: #4a9eff;
+        color: #5b8fb9;
     }
     .metric-card .label {
         font-size: 0.75rem;
-        color: #555555;
+        color: #4a5568;
         margin-top: 0.3rem;
         text-transform: uppercase;
         letter-spacing: 0.1em;
     }
-    h2, h3 { color: #a0a0a0 !important; font-weight: 400 !important; }
-    .stCaption { color: #444444 !important; }
+    h2, h3 { color: #8899aa !important; font-weight: 400 !important; }
+    .stCaption { color: #3a4555 !important; }
     .story-block {
-        color: #666666;
+        color: #5a6a7a;
         font-size: 0.85rem;
         line-height: 1.6;
         max-width: 800px;
         margin-bottom: 1rem;
     }
-    .story-block strong { color: #a0a0a0; }
-    hr { border-color: #1a1a1a !important; }
+    .story-block strong { color: #8899aa; }
+    hr { border-color: #111820 !important; }
     </style>
     """,
     unsafe_allow_html=True,
@@ -285,7 +286,7 @@ with col_right:
         y="placement",
         orientation="h",
         color="placement",
-        color_discrete_sequence=["#4a9eff", "#36b5a0", "#e0a458", "#555555"],
+        color_discrete_sequence=["#5b8fb9", "#4a7fa5", "#2d5f8a", "#1e3a5f"],
         text="events",
     )
     fig_placement.update_layout(**PLOTLY_LAYOUT, showlegend=False)
@@ -322,7 +323,7 @@ fig_map = px.choropleth(
     color="events",
     hover_name="country",
     hover_data={"ips": True, "events": True, "country": False, "iso3": False},
-    color_continuous_scale=["#000000", "#0a2a4a", "#4a9eff", "#e0a458", "#d94f4f"],
+    color_continuous_scale=["#000000", "#0a1a2a", "#1e3a5f", "#4a7fa5", "#dc2626"],
 )
 fig_map.update_layout(
     paper_bgcolor=DARK_PAPER,
@@ -366,7 +367,7 @@ with col_left2:
         x="events",
         y="country",
         orientation="h",
-        color_discrete_sequence=["#4a9eff"],
+        color_discrete_sequence=["#4a7fa5"],
         text="events",
     )
     layout_geo = {k: v for k, v in PLOTLY_LAYOUT.items() if k != "yaxis"}
@@ -391,7 +392,7 @@ with col_right2:
         infra_counts,
         values="events",
         names="type",
-        color_discrete_sequence=["#4a9eff", "#36b5a0", "#e0a458", "#d94f4f", "#555555"],
+        color_discrete_sequence=["#5b8fb9", "#4a7fa5", "#2d5f8a", "#1e3a5f", "#111820"],
         hole=0.45,
     )
     fig_infra.update_layout(
@@ -423,11 +424,11 @@ if mitre_rows:
     mitre_df = mitre_df.sort_values("events", ascending=True)
 
     TACTIC_COLORS = {
-        "Discovery": "#36b5a0",
-        "Impact": "#d94f4f",
-        "Credential Access": "#e0a458",
+        "Discovery": "#4a7fa5",
+        "Impact": "#dc2626",
+        "Credential Access": "#5b8fb9",
         "Persistence": "#9b6fd4",
-        "Privilege Escalation": "#4a9eff",
+        "Privilege Escalation": "#7ba7cc",
     }
 
     fig_mitre = px.bar(
@@ -473,7 +474,7 @@ fig_events = px.bar(
     x="count",
     y="event",
     orientation="h",
-    color_discrete_sequence=["#e0a458"],
+    color_discrete_sequence=["#5b8fb9"],
     text="count",
 )
 fig_events.update_layout(**PLOTLY_LAYOUT, height=480)
@@ -570,14 +571,14 @@ with col_table:
 with col_total:
     st.markdown(
         '<div class="metric-card" style="margin-top: 0.5rem;">'
-        f'<div class="value" style="color: #d94f4f;">${total_daily:,.0f}</div>'
+        f'<div class="value" style="color: #dc2626;">${total_daily:,.0f}</div>'
         '<div class="label">potential daily burn</div>'
         "</div>",
         unsafe_allow_html=True,
     )
     st.markdown(
         '<div class="metric-card" style="margin-top: 0.8rem;">'
-        f'<div class="value" style="color: #d94f4f; font-size: 1.5rem;">${total_daily * 30:,.0f}</div>'
+        f'<div class="value" style="color: #dc2626; font-size: 1.5rem;">${total_daily * 30:,.0f}</div>'
         '<div class="label">monthly if undetected</div>'
         "</div>",
         unsafe_allow_html=True,
@@ -609,10 +610,10 @@ st.markdown(
     f"<strong>{n_countries}</strong> countries · {date_min} — {date_max}"
     "<br><br>"
     'Canary tokens generated with <a href="https://canarytokens.org" '
-    'style="color: #4a9eff;" target="_blank">canarytokens.org</a> by '
-    '<a href="https://thinkst.com" style="color: #4a9eff;" target="_blank">Thinkst</a> · '
+    'style="color: #5b8fb9;" target="_blank">canarytokens.org</a> by '
+    '<a href="https://thinkst.com" style="color: #5b8fb9;" target="_blank">Thinkst</a> · '
     'Attacker behavior mapped to <a href="https://attack.mitre.org/matrices/enterprise/cloud/" '
-    'style="color: #4a9eff;" target="_blank">MITRE ATT&CK for Cloud</a>'
+    'style="color: #5b8fb9;" target="_blank">MITRE ATT&CK for Cloud</a>'
     "</div>",
     unsafe_allow_html=True,
 )
