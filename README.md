@@ -1,129 +1,121 @@
 # canary-token-analytics
 
-Threat-intelligence analysis of a fleet of deliberately leaked AWS canary tokens and the real intrusion attempts they recorded (462 events and counting).
+Threat-intelligence analysis of **1 301 real intrusion attempts** against a fleet of deliberately leaked AWS canary tokens — 210 unique attacker IPs across 46 countries, collected over 35 days of continuous monitoring.
 
-## What is a canary token?
+## What is this?
 
-A canary token is a fake credential that has no real access to anything. Its only purpose is to sound an alarm: the moment someone tries to use it, it sends an alert. Here the token is a fake AWS access key. It grants nothing, but every attempt to authenticate or call an AWS API with it generates an email that captures the source IP, the API action attempted, and a timestamp. In other words, it is a tripwire for credential theft.
+A canary token is a fake credential that grants no access. Its only job is to trip an alarm: the moment someone tries to use it, it fires an alert with the source IP, the API action attempted, and a timestamp. It is a tripwire for credential theft.
 
-## The dataset
+This project planted five AWS canary tokens across public GitHub repositories — each in a different kind of file — and built a complete data-analytics pipeline around the attacks they recorded: automated ingestion, IP enrichment, attacker-intent classification, MITRE ATT&CK mapping, and passive OSINT investigation.
 
-The data is **self-generated original data**, not a downloaded or public dataset: a fake-but-real AWS canary token was deliberately published inside a public GitHub repository, and every subsequent attempt to use it was captured as an alert email. Each event corresponds to a real actor — an automated bot or an AWS-side defense — trying to do something with a credential that was already dead.
+Every event in the dataset is a real actor (an automated bot or an AWS-side defense) trying to do something with a credential that was already dead.
 
-The first token produced **16 events over roughly one month**. Since expanding to the fleet below, the dataset has grown to **462 events (as of 2026-08-30) and keeps growing** as the tokens keep firing — see [`docs/fleet_placement_analysis.md`](docs/fleet_placement_analysis.md) for the first cross-placement finding.
+## Key findings
 
-## Data collection: the honeypot fleet
+- **AWS auto-quarantined the leaked key in ~17 minutes.** Every later attempt hit a credential that had been dead since minute 17.
+- **LLMjacking is the primary objective.** 219 events target AWS Bedrock (`InvokeModel`, `Converse`, `ConverseStream`) — hijacking the account to run AI models at the victim's expense.
+- **One coordinated operator dominates `terraform.tfvars` traffic.** 53 IPs across 23 countries running an identical software build (same Linux kernel, boto3 version, retry mode), 48 of 53 on hosting/proxy networks (M247, HostRoyale, ServerMania, Leaseweb). A single operator behind a rotating proxy pool, not independent attackers.
+- **Placement matters.** `.env` draws the most volume (699 events), `terraform.tfvars` draws the deepest kill-chain penetration (465 events, concentrated abuse). `config.ini` and `settings.yaml` trail significantly.
+- **A leaked key is hit within minutes.** Fresh placements begin drawing automated traffic almost immediately.
+- **Privilege escalation attempts observed.** `PutUserPolicy` (granting durable permissions) and `CreateUser` (backdoor IAM user) show hands-on operators, not just automated scanners.
 
-The first month's events came from a **single** token. To grow the dataset into something that can eventually support statistics — and to compare how the *placement* of a leaked key affects how fast it is found — the token is now one of a small **fleet** of canary tokens, each planted in a different public repository and a different kind of file:
+## MITRE ATT&CK coverage
 
-| Token | Repository | Placement |
-|---|---|---|
-| 1 | [social-metrics-vault](https://github.com/aroaxinping/social-metrics-vault) | `.env` |
-| 2 | [homelab-s3-sync](https://github.com/aroaxinping/homelab-s3-sync) | `.env` |
-| 3 | [cloud-usage-tracker](https://github.com/aroaxinping/cloud-usage-tracker) | `config.ini` |
-| 4 | [sensor-data-lake](https://github.com/aroaxinping/sensor-data-lake) | `settings.yaml` |
-| 5 | [infra-heartbeat](https://github.com/aroaxinping/infra-heartbeat) | `terraform.tfvars` |
+Every observed API action is mapped to MITRE ATT&CK for Cloud ([`docs/mitre_attack.md`](docs/mitre_attack.md)):
 
-Each token is unique, so every alert is attributable back to a specific repo and placement (see [`data/raw/fleet_registry.csv`](data/raw/fleet_registry.csv)). Those repositories are intentionally thin instruments of the experiment, each carrying a clear note that the credential is a canary token; this repository is where their data is collected and analyzed.
+| Tactic | Techniques | Events |
+|---|---|---:|
+| Discovery | `T1580`, `T1078.004`, `T1087.004`, `T1069.003`, `T1619`, `T1201` | 685 |
+| Impact | `T1496` Resource Hijacking | 172 |
+| Credential Access | `T1552`, `T1552.005` | 124 |
+| Persistence | `T1136.003` Create Cloud Account | 2 |
+| Privilege Escalation | `T1098` Account Manipulation | 2 |
 
-## Why a leaked key is a target: how it gets monetised
+## The honeypot fleet
 
-An AWS access key is effectively **a payment method wired to an infinite supermarket of compute**. Anyone holding it can order Amazon services *as the victim's account* — and the bill lands on the victim. "Free for the attacker" always means the same thing: someone else pays. That is why bots start testing a key within minutes of it hitting a public repo, probing for these four businesses:
+| Token | Repository | Placement | Events |
+|---|---|---|---:|
+| 1 | [social-metrics-vault](https://github.com/aroaxinping/social-metrics-vault) | `.env` | 699 |
+| 2 | [homelab-s3-sync](https://github.com/aroaxinping/homelab-s3-sync) | `.env` | — |
+| 3 | [cloud-usage-tracker](https://github.com/aroaxinping/cloud-usage-tracker) | `config.ini` | 115 |
+| 4 | [sensor-data-lake](https://github.com/aroaxinping/sensor-data-lake) | `settings.yaml` | 22 |
+| 5 | [infra-heartbeat](https://github.com/aroaxinping/infra-heartbeat) | `terraform.tfvars` | 465 |
 
-| AWS service | What it rents | How it's monetised | Events seen in this data |
+Each token is unique, so every alert is attributable to a specific repo and placement. Those repositories are intentionally thin instruments of the experiment; this repository is where their data is collected and analyzed.
+
+## Why a leaked key is a target
+
+An AWS access key is a payment method wired to an infinite supermarket of compute. Anyone holding it can order Amazon services as the victim's account — the bill lands on the victim.
+
+| AWS service | What it rents | How it's monetised | Example events |
 |---|---|---|---|
-| **Bedrock** | AI models | Free/resold AI on the victim's bill (**LLMjacking**) | `InvokeModel`, `Converse`, `ListFoundationModels` |
-| **SES** | Email delivery | Phishing that inherits Amazon's inbox reputation | `GetSendQuota` |
+| **Bedrock** | AI models | Free/resold AI on the victim's bill (**LLMjacking**) | `InvokeModel`, `Converse` |
+| **SES** | Email delivery | Phishing with Amazon's inbox reputation | `GetSendQuota` |
 | **S3** | Storage | Steal and sell the victim's data | `ListBuckets` |
-| **IAM** | Users & permissions | Create a back door that survives key revocation | `CreateUser` |
+| **IAM** | Users & permissions | Create a backdoor that survives key revocation | `CreateUser`, `PutUserPolicy` |
 
-See [`docs/how_a_stolen_key_is_monetised.md`](docs/how_a_stolen_key_is_monetised.md) for the full walkthrough, and [`docs/event_cheatsheet.md`](docs/event_cheatsheet.md) for what every observed API call does.
+See [`docs/how_a_stolen_key_is_monetised.md`](docs/how_a_stolen_key_is_monetised.md) for the full walkthrough.
 
 ## Pipeline
 
-The dataset is kept current end to end, from inbox to analysis-ready CSV, in one command (and, if you want, automatically on a schedule):
+The dataset is kept current end to end — from inbox to analysis-ready CSV — in one command:
 
-1. **Ingest alerts** — pull every canarytoken alert from Gmail over the Gmail API (read-only), parse each email body into a structured event (source IP, AWS API action, timestamp, token/placement), and merge it into the raw dataset. Parsing and de-duplication live in the tested [`ingest`](src/canary_token_analytics/ingest.py) module; the Gmail fetch is [`scripts/fetch_gmail.py`](scripts/fetch_gmail.py).
-2. **Enrich IPs** — for every source IP, add geolocation, ASN, and infrastructure type (datacenter VPS, cloud provider, residential/mobile proxy, ISP), proxy/hosting/mobile flags (ip-api), and a GreyNoise mass-scanning signal.
-3. **Classify intent** — map each observed AWS API call to an attacker-intent phase (validation, reconnaissance, persistence, resource abuse) using a fixed, documented taxonomy.
-
-```bash
+```
 uv run --extra gmail python scripts/fetch_gmail.py   # pull + parse + dedup new alerts
 uv run python scripts/build_dataset.py               # enrich + classify -> data/processed/
 ```
 
-### Automated ingestion & scheduling
+1. **Ingest** — Gmail API (read-only) pulls canarytoken alert emails, parses each into a structured event (IP, AWS action, timestamp, token/placement), and merges into the raw dataset. Idempotent and de-duplicated.
+2. **Enrich** — for every source IP: geolocation, ASN, infrastructure type, proxy/hosting/mobile flags (ip-api), GreyNoise mass-scanning signal.
+3. **Classify** — each AWS API call mapped to an attacker-intent phase and MITRE ATT&CK technique.
 
-The whole fetch-and-rebuild loop runs unattended. A macOS **launchd** job ([`scripts/run_ingest.sh`](scripts/run_ingest.sh) + [`deploy/com.aroa.canary-ingest.plist`](deploy/com.aroa.canary-ingest.plist)) executes the Gmail fetch and dataset rebuild **every 6 hours**, so the dataset stays current with no manual step. It leaves new data in the working tree for review — it never commits or pushes. One-time Gmail OAuth setup is in [`docs/INGESTION_SETUP.md`](docs/INGESTION_SETUP.md); the scheduler in [`docs/SCHEDULER_SETUP.md`](docs/SCHEDULER_SETUP.md).
+**Automated:** a macOS launchd job runs the full pipeline every 6 hours ([`docs/SCHEDULER_SETUP.md`](docs/SCHEDULER_SETUP.md)).
 
-### Two OSINT tiers
+### OSINT tiers
 
-Enrichment is layered so the base pipeline stays fast while a deeper pass adds per-IP intelligence:
-
-- **Base tier** (in the pipeline above): geolocation, ASN/org, infra type, ip-api proxy/hosting/mobile flags, and GreyNoise — written to [`data/processed/ip_intel.csv`](data/processed/ip_intel.csv).
-- **Deep tier** ([`enrich_deep.py`](src/canary_token_analytics/enrich_deep.py) via [`scripts/build_deep_osint.py`](scripts/build_deep_osint.py)): a passive per-IP dossier — Shodan InternetDB (open ports, tags, CVEs), `whois` (netblock, org, country, abuse contact), and reverse DNS — written to [`data/processed/ip_intel_deep.csv`](data/processed/ip_intel_deep.csv). All lookups query third-party databases *about* the IP; nothing ever connects to attacker infrastructure. Attribution stops at infrastructure. See [`docs/osint_deep.md`](docs/osint_deep.md).
-
-## Key findings
-
-- **AWS auto-quarantined the original leaked key roughly 17 minutes after publication.** From that moment on the credential was inert — every later attempt on it hit a key that had been dead since minute 17.
-- **One coordinated actor dominates the traffic.** The `terraform.tfvars` key drew a **fan-out of 53 IPs across 23 countries all running an identical software build** (same Linux kernel, boto3 version, and retry mode), each taking a different step of the kill-chain. **48 of 53** of those IPs resolve to hosting/proxy networks (M247, HostRoyale, ServerMania, Leaseweb…) — the signature of a single operator behind a rotating proxy pool, not many independent attackers. See [`docs/fleet_placement_analysis.md`](docs/fleet_placement_analysis.md).
-- **Intent skews toward LLMjacking, with a privilege-escalation attempt.** The money-move events cluster on **AWS Bedrock** (`InvokeModel` / `Converse`) — hijacking the account to run AI at the victim's expense. Separately, a hands-on operator on the `config.ini` key attempted **`PutUserPolicy`** (granting itself durable permissions), and one IP (`197.57.31.248`) worked **two** different placements — actors handle multiple keys.
-- **A leaked key is hit within minutes.** Across the fleet, fresh placements begin drawing automated traffic almost immediately after exposure — and none of it could have worked, since every request landed on a canary that grants nothing.
+- **Base tier** (in-pipeline): geo, ASN/org, infra type, ip-api flags, GreyNoise → [`ip_intel.csv`](data/processed/ip_intel.csv)
+- **Deep tier** ([`enrich_deep.py`](src/canary_token_analytics/enrich_deep.py)): Shodan InternetDB (ports, tags, CVEs), whois, reverse DNS → [`ip_intel_deep.csv`](data/processed/ip_intel_deep.csv). All lookups query third-party databases about the IP; nothing connects to attacker infrastructure.
 
 ## Experiment: does placement matter? (A/B)
 
-The fleet finding above — that "infrastructure-flavored" keys (e.g. `terraform.tfvars`) draw faster, deeper attacks — is **suggestive but confounded**: with one repository per placement, a file type is entangled with which specific key happened to reach a shared credential-abuse feed. A correlation, not a cause.
-
-To settle it, the [`experiment/`](experiment/) directory specifies a **randomized, matched-block field experiment**: 50 thin public repos, organized as **10 matched blocks × 5 conditions**, where the credential-bearing file (`.env` → `config.ini` → `terraform.tfvars` → CI deploy workflow, plus a fake-key negative control) is assigned **at random** within each block, and launched in two temporally separated waves. Random assignment de-confounds placement from feed luck; blocking strips out the huge day-to-day noise in scanning intensity. Outcomes — time-to-first-hit (survival), hit volume, proxy-pool appearance, and kill-chain depth — are analysed with survival, count, and ordinal mixed models against an *a priori* monotone "infra-ness" gradient.
-
-The full causal design, statistical plan, and honest power/limitations discussion are in [`experiment/DESIGN.md`](experiment/DESIGN.md); the deployment runbook in [`experiment/ROLLOUT.md`](experiment/ROLLOUT.md).
-
-## Scope & limitations
-
-- **Small dataset.** 462 events is enough to describe behavior, not to make statistical claims. Treat every observation as descriptive, not inferential.
-- **Descriptive, not predictive.** This is descriptive threat-intelligence analysis, not statistical modelling. It characterizes what happened; it does not forecast or generalize to a population.
-- **Placement is confounded.** With one repository per placement, the concentration of traffic on `terraform.tfvars` cannot be cleanly attributed to the file type — it is confounded with which specific key reached a shared credential feed. This is exactly what the [randomized A/B experiment](#experiment-does-placement-matter-ab) is designed to de-confound. See [`docs/fleet_placement_analysis.md`](docs/fleet_placement_analysis.md).
-- **No attribution of people.** Enrichment identifies infrastructure (IPs, ASNs, geography), not the humans behind it. Attributing individuals is out of scope and would require legal process.
+The fleet finding — that infrastructure-flavored keys draw faster, deeper attacks — is suggestive but confounded. To settle it, [`experiment/`](experiment/) specifies a **randomized, matched-block field experiment**: 50 repos, 10 blocks × 5 conditions, with placement assigned at random within each block and launched in two waves. See [`experiment/DESIGN.md`](experiment/DESIGN.md).
 
 ## Repository structure
 
 ```
 canary-token-analytics/
 ├── src/canary_token_analytics/
-│   ├── ingest.py       # parse alert emails -> events + dedup/merge (tested)
-│   ├── enrich.py       # geo / ASN / infra type / proxy flags / GreyNoise
-│   ├── enrich_deep.py  # deep tier: Shodan InternetDB + whois + reverse DNS
-│   ├── taxonomy.py     # AWS API call -> attacker-intent phase
-│   └── pipeline.py     # orchestrates raw -> enriched CSVs
+│   ├── ingest.py        # parse alert emails -> structured events
+│   ├── enrich.py        # geo / ASN / infra type / proxy flags / GreyNoise
+│   ├── enrich_deep.py   # Shodan InternetDB + whois + reverse DNS
+│   ├── taxonomy.py      # AWS API call -> attacker-intent phase
+│   ├── mitre.py         # event -> MITRE ATT&CK tactic + technique
+│   └── pipeline.py      # orchestrates raw -> enriched CSVs
 ├── data/
-│   ├── raw/            # source captures + fleet_registry.csv (token -> repo -> placement)
-│   └── processed/      # enriched, analysis-ready CSVs incl. ip_intel_deep.csv (the deliverable)
-├── experiment/         # randomized A/B placement experiment: DESIGN.md, ROLLOUT.md, block plan
-├── scripts/            # fetch_gmail.py, build_dataset.py, build_deep_osint.py, run_ingest.sh
-├── deploy/             # launchd plist for scheduled ingestion
-├── notebooks/          # exploratory analysis and visualization
-├── docs/               # methodology, monetisation primer, event cheat sheet, placement analysis, ingestion/scheduler setup, OSINT
-└── tests/              # unit + data-quality tests
+│   ├── raw/             # source captures
+│   └── processed/       # enriched, analysis-ready CSVs
+├── experiment/          # randomized A/B placement experiment
+├── app/                 # Streamlit dashboard
+├── scripts/             # fetch_gmail, build_dataset, build_deep_osint
+├── deploy/              # launchd plist for scheduled ingestion
+├── notebooks/           # exploratory analysis and visualization
+├── docs/                # methodology, MITRE mapping, OSINT, monetisation primer
+└── tests/               # 111 unit + data-quality tests
 ```
 
-See [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) for how the data was collected, enriched, and graded for confidence.
+## Scope & limitations
+
+- **Descriptive, not predictive.** This is threat-intelligence case analysis, not statistical modelling.
+- **No attribution of people.** Enrichment identifies infrastructure (IPs, ASNs, geography), not humans. Attribution stops at infrastructure.
+- **Passive OSINT only.** Every technique reads publicly exposed information or queries third-party databases. No authentication was attempted, no credential was ever submitted to a target.
+
+See [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) for the full methodology, confidence grading, and ethics statement.
 
 ## How to run
 
-This project uses [uv](https://docs.astral.sh/uv/).
-
 ```bash
-# install dependencies into a local environment
 uv sync
-
-# pull new canarytoken alerts from Gmail, parse + dedup them (read-only)
-uv run --extra gmail python scripts/fetch_gmail.py
-
-# build the enriched dataset from the raw events (enrich + classify)
-uv run python scripts/build_dataset.py
-
-# optional: deep per-IP OSINT dossiers (Shodan InternetDB + whois + rDNS)
-uv run python scripts/build_deep_osint.py
+uv run python scripts/build_dataset.py          # rebuild from raw events (no Gmail needed)
+uv run --extra gmail python scripts/fetch_gmail.py  # pull fresh alerts (requires OAuth setup)
+uv run --extra dashboard streamlit run app/dashboard.py  # launch the dashboard
 ```
-
-`build_dataset.py` alone rebuilds the analysis from the raw events already in the repo — no Gmail setup needed. To pull fresh alerts, do the one-time Gmail OAuth setup ([`docs/INGESTION_SETUP.md`](docs/INGESTION_SETUP.md)); to run the fetch+rebuild automatically every 6 hours, install the launchd job ([`docs/SCHEDULER_SETUP.md`](docs/SCHEDULER_SETUP.md)).
