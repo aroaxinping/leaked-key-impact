@@ -1,0 +1,121 @@
+source_ip,rdns,shodan_ports,shodan_tags,shodan_vulns,whois_netname,whois_org,whois_country,whois_abuse
+102.212.90.135,,,,,South-Africa-Internet2,SA-Internet-Services2,ZA,
+103.130.61.61,,"53,80,8081,10000",proxy,"CVE-2026-29167,CVE-2022-37436,CVE-2026-44631,CVE-2023-31122,CVE-2023-5824,CVE-2011-2688,CVE-2019-0196,CVE-2023-49288,CVE-2016-4051,CVE-2018-1301,CVE-2022-28330,CVE-2018-17199,CVE-2017-15715,CVE-2021-32785,CVE-2026-43951,CVE-2026-33523,CVE-2016-2390,CVE-2025-65082,CVE-2009-0796,CVE-2019-12528,CVE-2021-28652,CVE-2021-44224,CVE-2021-28651,CVE-2019-12529,CVE-2024-24795,CVE-2021-31806,CVE-2016-4555,CVE-2021-28116,CVE-2026-49975,CVE-2020-8450,CVE-2013-0942,CVE-2018-1312,CVE-2024-43394,CVE-2021-34798,CVE-2023-46724,CVE-2019-0220,CVE-2026-33857,CVE-2016-10002,CVE-2026-44186,CVE-2016-4054,CVE-2020-25097,CVE-2016-8612,CVE-2018-19131,CVE-2024-45802,CVE-2026-34059,CVE-2021-39275,CVE-2012-4360,CVE-2026-29169,CVE-2016-4556,CVE-2021-26690,CVE-2019-12520,CVE-2025-62168,CVE-2018-11763,CVE-2007-4723,CVE-2021-31807,CVE-2023-46846,CVE-2020-35452,CVE-2016-3948,CVE-2022-30556,CVE-2006-20001,CVE-2013-2765,CVE-2018-1333,CVE-2018-1303,CVE-2026-29170,CVE-2019-0211,CVE-2017-15710,CVE-2023-49285,CVE-2020-8517,CVE-2013-4365,CVE-2024-40898,CVE-2026-44119,CVE-2025-58098,CVE-2024-43204,CVE-2019-12526,CVE-2024-27316,CVE-2024-38477,CVE-2013-0941,CVE-2020-8449,CVE-2024-38474,CVE-2026-42535,CVE-2016-4052,CVE-2016-4979,CVE-2023-25690,CVE-2025-66200,CVE-2024-38475,CVE-2012-3526,CVE-2019-10082,CVE-2020-15811,CVE-2022-26377,CVE-2017-9788,CVE-2026-33526,CVE-2020-13938,CVE-2021-32786,CVE-2026-33515,CVE-2022-29404,CVE-2023-46728,CVE-2025-54574,CVE-2026-34356,CVE-2022-22720,CVE-2021-32791,CVE-2023-50269,CVE-2021-33620,CVE-2020-1927,CVE-2017-3169,CVE-2019-18676,CVE-2026-32748,CVE-2019-18679,CVE-2018-1000024,CVE-2022-22721,CVE-2019-12523,CVE-2017-9798,CVE-2024-37894,CVE-2024-47252,CVE-2022-28614,CVE-2023-45802,CVE-2022-28615,CVE-2021-31808,CVE-2021-33193,CVE-2025-59362,CVE-2025-59775,CVE-2019-10092,CVE-2017-7679,CVE-2021-40438,CVE-2020-15810,CVE-2025-53020,CVE-2019-0217,CVE-2024-38473,CVE-2019-12522,CVE-2022-36760,CVE-2019-12519,CVE-2019-17567,CVE-2023-46847,CVE-2026-33007,CVE-2011-1176,CVE-2016-5387,CVE-2017-3167,CVE-2016-4554,CVE-2019-12524,CVE-2009-2299,CVE-2019-18860,CVE-2019-10098,CVE-2023-49286,CVE-2024-38476,CVE-2025-49812,CVE-2016-4553,CVE-2021-46784,CVE-2018-19132,CVE-2021-32792,CVE-2024-38472,CVE-2026-34032,CVE-2019-18678,CVE-2016-8740,CVE-2016-3947,CVE-2026-24072,CVE-2016-4975,CVE-2024-39573,CVE-2022-22719,CVE-2018-1302,CVE-2024-42516,CVE-2022-41318,CVE-2019-12525,CVE-2018-1283,CVE-2012-4001,CVE-2024-25617,CVE-2019-13345,CVE-2018-17189,CVE-2026-28780,CVE-2019-18677,CVE-2020-11945,CVE-2020-11985,CVE-2016-1546,CVE-2019-12521,CVE-2021-26691,CVE-2018-1000027,CVE-2020-24606,CVE-2026-33006,CVE-2023-38709,CVE-2016-4053,CVE-2022-23943,CVE-2020-1934,CVE-2020-15049,CVE-2016-10003,CVE-2021-44790,CVE-2022-31813,CVE-2020-14058,CVE-2016-8743",FASTAMA-ID,PT. Fiqran Solusindo Mediatama,ID,noc@fastama.net.id
+103.193.144.223,,"53,80,161,443,2000",,,IDNIC-JKNID-ID,PT Jaringan Kabel Nusantara,ID,admin@jkn.my.id
+103.75.229.175,,,,,HOSTROYALETECHNOLOGIES-AP,HostRoyale Technologies Pvt Ltd,NZ,support@hostroyale.com
+104.224.90.91,104.224.90.91.colocationamerica.com,,,,CAC-BLOCK10,Colocation America Corporation,US,Abuse@colocationamerica.com
+104.238.9.59,,,,,RIPE,RIPE Network Coordination Centre,NL,abuse@ripe.net
+104.239.35.21,,,,,RIPE,RIPE Network Coordination Centre,NL,abuse@ripe.net
+104.239.90.56,,,,,RIPE,RIPE Network Coordination Centre,NL,abuse@ripe.net
+104.239.91.68,,,,,RIPE,RIPE Network Coordination Centre,NL,abuse@ripe.net
+104.252.196.182,,,,,EGN-21,Subnet Digital LLC,US,abuse@egihosting.com
+104.253.219.28,,,,,EGN-21,Subnet Digital LLC,US,abuse@egihosting.com
+104.28.196.56,,,,,CLOUDFLARENET,"Cloudflare, Inc.",US,abuse@cloudflare.com
+104.28.228.56,,,,,CLOUDFLARENET,"Cloudflare, Inc.",US,abuse@cloudflare.com
+104.28.228.57,,,,,CLOUDFLARENET,"Cloudflare, Inc.",US,abuse@cloudflare.com
+105.47.246.148,,,,,Mobinil,The Egyptian Company for Mobile Services (Mobinil),EG,
+107.181.148.28,,,,,RIPE,RIPE Network Coordination Centre,NL,abuse@ripe.net
+132.226.202.45,,22,cloud,,OC-260,Oracle Corporation,US,network-contact_ww_grp@oracle.com
+139.162.165.123,139-162-165-123.ip.linodeusercontent.com,22,cloud,,RIPE-ERX-139-162-0-0,RIPE Network Coordination Centre,NL,abuse@ripe.net
+140.99.197.126,,7003,proxy,,EPICUP-LEGACY-SPACE,EpicUp Holdings Inc,US,abuse@ipxo.com
+142.147.128.97,,,,,WEB2OBJECTS-08,Web2Objects LLC,US,abuse@web2objects.com
+142.202.254.134,,,,,CUBED-NETWORKS-2,Bogle Networks LLC,US,nick@bogle.net
+146.103.40.12,,"22,443",self-signed,,RIPE-ERX-146-100-0-0,RIPE Network Coordination Centre,NL,abuse@ripe.net
+151.245.207.25,,,,,NET-151-245-204-0-22,Private Customer,GB,report@abuseradar.com
+152.232.100.239,,9333,proxy,,BNS-34,B2 Net Solutions Inc.,CA,abuse-system@servermania.com
+152.233.13.145,unn-152-233-13-145.datapacket.com,,,,RIPE,RIPE Network Coordination Centre,NL,abuse@ripe.net
+154.12.141.113,,,,,NET-154-12-0-0,"Cogent Communications, LLC",MU,abuse@cogentco.com
+154.137.0.30,,,,,Orange-EG,The Egyptian Company for Mobile Services (Mobinil),EG,
+154.21.154.28,,,,,NET-154-21-0-0,"Cogent Communications, LLC",MU,abuse@cogentco.com
+155.254.34.219,,,,,RIPE,RIPE Network Coordination Centre,NL,abuse@ripe.net
+157.85.97.242,,"22,80,443,2082,8888",,,APNIC-ERX-157-85-0-0,Asia Pacific Network Information Centre,AU,search-apnic-not-arin@apnic.net
+172.121.139.119,,,,,EGN-23,EGIHosting,US,abuse@egihosting.com
+172.56.14.182,,,,,TMO9,"T-Mobile USA, Inc.",US,abuse@t-mobile.com
+172.56.198.175,,,,,TMO9,"T-Mobile USA, Inc.",US,abuse@t-mobile.com
+172.58.243.229,,,,,TMO9,"T-Mobile USA, Inc.",US,abuse@t-mobile.com
+173.211.69.215,,,,,CAC-BLOCK7,Colocation America Corporation,US,Abuse@colocationamerica.com
+173.239.211.245,mail2.cmigroupe.com,,,,LOGICWEB,LogicWeb Inc.,US,abuse@logicweb.com
+176.113.67.230,,,,,virtual-hosting,virtual-hosting,JP,
+181.105.140.159,host159.181-105-140.telecom.net.ar,,,,,Apolo -Gold-Telecom-Per,AR,abuse@teco.com.ar
+181.214.37.90,,,,,,,,
+181.214.6.149,,,,,,,,
+182.4.101.162,,,,,TELKOMSEL-ID,PT. Telekomunikasi Selular (Telkomsel) Indonesia,ID,abuse@idnic.net
+185.216.105.134,,,,,US-ACEDATACENTER-20170804,"Ace Data Centers II, LLC",US,abuse@acedatacenter.com
+185.48.52.13,,,,,Mexico-internet,Mexico-internet,MX,
+191.101.121.117,,,,,,,,
+191.96.254.62,,,,,,,,
+192.186.185.83,sti10n-car-83.stillagrcar.com,,,,B2NETSOLUTIONS,B2 Net Solutions Inc.,CA,abuse-system@servermania.com
+192.210.132.27,192-210-132-27-host.colocrossing.com,,,,CC-11,HostPapa,US,net-abuse-global@hostpapa.com
+192.241.104.43,hosting.from.limeisp.com,8137,proxy,,B2NETSOLUTIONS,B2 Net Solutions Inc.,CA,abuse-system@servermania.com
+192.241.94.126,pda.intelligentmenscompanies5.com,,,,B2NETSOLUTIONS,B2 Net Solutions Inc.,CA,abuse-system@servermania.com
+193.25.215.182,182.215.25.193.in-addr.arpa,"80,443,22222",,,READYDEDIS,READYDEDIS,US,readydedisllc@gmail.com
+193.32.126.213,,,,,NET-31173-193-32-126-0-24,31173 Services France,FR,abuse-cust-fr@31173.se
+197.57.31.248,,,,,All-23,TE Data,EG,abuse@te.eg
+198.105.110.56,,,,,RIPE,RIPE Network Coordination Centre,NL,abuse@ripe.net
+198.44.58.206,,,,,HOSTWINDS-17-4,HostPapa,US,net-abuse-global@hostpapa.com
+2.26.160.172,,80,eol-product,"CVE-2023-44487,CVE-2025-23419",ipxo,NetGrid Host LTD,EU,report@abuseradar.com
+202.179.188.22,,"22,8291,8728",,,TDS-JKT-08,PT Telemedia Dinamika Sarana,ID,abuse@tds.net.id
+203.150.113.244,244.113.150.203.sta.inet.co.th,,,,INET-IBB-TH,INEXT Broadband Company Limited,TH,op-bb@inet.co.th
+213.169.228.69,213-169-228-69.easynet.nl,,,,CODE200-20080305-GTT,Code200 UAB,US,
+216.173.75.187,,6488,proxy,,RIPE,RIPE Network Coordination Centre,NL,abuse@ripe.net
+216.73.160.202,,,,,BANDITO-NETWORKS-US,"Bandito Networks, Inc",US,abuse@bandito.net
+216.74.114.166,,,,,CAC-BLOCK13,Colocation America Corporation,US,Abuse@colocationamerica.com
+216.74.115.247,,,,,CAC-BLOCK13,Colocation America Corporation,US,Abuse@colocationamerica.com
+218.51.123.96,,,,,broadNnet,SK Broadband Co Ltd,KR,irt@nic.or.kr
+23.27.196.84,23-27-196-84.ips.acedatacenter.com,,,,ADCIL,"Ace Data Centers II, L.L.C.",US,ipabuse@acedatacenter.com
+31.10.146.45,31-10-146-45.cgn.dynamic.upc.ch,,,,CABLECOMMAIN-NET,DHCP Scopes - AFTR,CH,abuse@sunrise.net
+31.56.138.192,,6264,proxy,,AE-GOLDIP,GOLD IP L.L.C-FZ,ID,
+31.57.41.3,,,,,NET-31-57-41-0-24,Private Customer,LT,report@abuseradar.com
+31.59.27.55,,,,,NET-31-59-27-0-24,Private Customer,LT,report@abuseradar.com
+31.76.31.55,,"22,80,443,3389",eol-product,"CVE-2025-23419,CVE-2023-44487",PowerRDP,PowerRDP Network LTD,FI,abuse@powerrdp.pro
+34.173.24.24,24.24.173.34.bc.googleusercontent.com,,,,GOOGL-2,Google LLC,US,google-cloud-compliance@google.com
+38.225.15.72,,,,,COGENT-A,"Cogent Communications, LLC",US,abuse@cogentco.com
+41.33.240.195,,,,,TED-00,TE Data,EG,abuse@te.eg
+45.127.248.186,186.248.127.45-ns1.colocationamerica.com,,,,RIPE,RIPE Network Coordination Centre,NL,abuse@ripe.net
+45.13.237.250,250.237.13.45.in-addr.arpa,22,,,RIPE,RIPE Network Coordination Centre,NL,abuse@ripe.net
+45.131.103.61,,,,,RIPE,RIPE Network Coordination Centre,NL,abuse@ripe.net
+45.131.95.132,,,,,RIPE,RIPE Network Coordination Centre,NL,abuse@ripe.net
+45.148.10.150,,"22,443",,,RIPE,RIPE Network Coordination Centre,NL,abuse@ripe.net
+45.150.177.155,,,,,RIPE,RIPE Network Coordination Centre,NL,abuse@ripe.net
+45.38.89.211,,,,,EGN-22,Subnet Digital LLC,US,abuse@egihosting.com
+45.39.5.133,,,,,EGN-22,Subnet Digital LLC,US,abuse@egihosting.com
+45.39.5.95,,,,,EGN-22,Subnet Digital LLC,US,abuse@egihosting.com
+45.43.70.99,,,,,RIPE,RIPE Network Coordination Centre,NL,abuse@ripe.net
+45.43.83.84,,,,,RIPE,RIPE Network Coordination Centre,NL,abuse@ripe.net
+45.56.115.32,45-56-115-32.ip.linodeusercontent.com,22,cloud,,LINODE-US,"Akamai Technologies, Inc.",US,abuse@akamai.com
+45.61.100.168,ip-45-61-100-168.fibre.fibrestream.ca,,,,WEB2OBJECTS-07,Web2Objects LLC,US,abuse@web2objects.com
+45.66.249.187,josephwcarrillo.actor,"80,443,554,2345,3128,8181","eol-product,open-dir","CVE-2026-29167,CVE-2019-11358,CVE-2026-44631,CVE-2026-34059,CVE-2011-2688,CVE-2025-23419,CVE-2026-44185,CVE-2012-4360,CVE-2026-29169,CVE-2025-49812,CVE-2024-38476,CVE-2026-34356,CVE-2026-29168,CVE-2024-38472,CVE-2026-34032,CVE-2026-43951,CVE-2026-33523,CVE-2025-65082,CVE-2009-0796,CVE-2007-4723,CVE-2026-24072,CVE-2025-23048,CVE-2024-39573,CVE-2024-42516,CVE-2015-9251,CVE-2024-47252,CVE-2020-11023,CVE-2024-24795,CVE-2012-4001,CVE-2025-59775,CVE-2026-48913,CVE-2020-11022,CVE-2013-2765,CVE-2025-55753,CVE-2026-49975,CVE-2013-0942,CVE-2026-29170,CVE-2025-53020,CVE-2026-28780,CVE-2024-43394,CVE-2024-38473,CVE-2013-4365,CVE-2024-40898,CVE-2026-44119,CVE-2024-36387,CVE-2026-33006,CVE-2026-42536,CVE-2025-58098,CVE-2024-43204,CVE-2023-38709,CVE-2024-27316,CVE-2024-38477,CVE-2013-0941,CVE-2024-38474,CVE-2026-42535,CVE-2026-33857,CVE-2026-44186,CVE-2026-33007,CVE-2011-1176,CVE-2025-66200,CVE-2024-38475,CVE-2012-3526,CVE-2026-34355,CVE-2025-49630,CVE-2009-2299",RIPE-ERX-45-66-0-0,RIPE Network Coordination Centre,NL,abuse@ripe.net
+45.67.216.15,vmi3413992.contaboserver.net,22,,,RIPE-ERX-45-66-0-0,RIPE Network Coordination Centre,NL,abuse@ripe.net
+45.67.3.40,,,,,RIPE-ERX-45-66-0-0,RIPE Network Coordination Centre,NL,abuse@ripe.net
+46.19.132.62,62.132.19.46.ripe.regiespfs.net,,,,FR-CMIN-20101115,C'Chartres Innovations Numeriques SEM,FR,
+46.202.78.247,,,,,NET-46-202-78-0-24,Private Customer,LT,report@abuseradar.com
+47.85.164.151,,,,,AL-3,Alibaba Cloud LLC,US,abuse@alibaba-inc.com
+51.83.143.35,mail.nexascode.com,"22,80,443,587,8001,8012,8085",,,waw1-sdagg18a-b-n93-1-2,OVH Sp. z o. o.,PL,abuse@ovh.net
+63.135.161.8,,,,,RL-861,Rockion LLC,US,netops@rockionllc.com
+64.137.57.64,,,,,RIPE,RIPE Network Coordination Centre,NL,abuse@ripe.net
+64.137.83.108,,,,,RIPE,RIPE Network Coordination Centre,NL,abuse@ripe.net
+64.51.234.158,,,,,MEGAPATH-BLK-16,"GTT Americas, LLC",US,abuse@gtt.net
+75.62.233.103,,,,,SBCIS-SBIS-6BLK,"AT&T Enterprises, LLC",US,abuse@att.net
+81.31.232.169,,22,,,IPXO,Private Customer,EU,report@abuseradar.com
+82.22.234.108,,,,,NET-82-22-234-0-24,Private Customer,DE,report@abuseradar.com
+82.22.245.103,,,,,NET-82-22-245-0-24,Private Customer,ZA,report@abuseradar.com
+82.22.249.134,,,,,NET-82-22-249-0-24,Private Customer,FI,report@abuseradar.com
+82.24.212.241,,,,,NET-82-24-212-0-24,Private Customer,US,report@abuseradar.com
+82.24.242.18,,,,,NET-82-24-242-0-24,Private Customer,LT,report@abuseradar.com
+82.25.213.200,,,,,NET-82-25-213-0-24,Private Customer,IE,report@abuseradar.com
+82.25.242.55,,,,,NET-82-25-242-0-24,Private Customer,LT,report@abuseradar.com
+82.27.233.49,,,,,NET-82-27-233-0-24,Private Customer,UA,report@abuseradar.com
+82.29.233.116,,,,,NET-82-29-233-0-24,Private Customer,SK,report@abuseradar.com
+82.29.245.35,,,,,NET-82-29-245-0-24,Private Customer,ZA,report@abuseradar.com
+84.247.60.99,,,,,IN-HOSTROYALE-20041008,HostRoyale Technologies Pvt Ltd,PL,
+87.237.15.238,ip-87-237-15-238.reverse.destiny.be,"443,9443",,,CHLORAGIS,Chloragis N.V,BE,abuse@dstny.be
+88.150.154.27,,"81,443,992,1080,1194,1935,5555","proxy,vpn","CVE-2024-45802,CVE-2019-18860,CVE-2023-5824,CVE-2026-33526,CVE-2024-25111,CVE-2018-1172,CVE-2023-49286,CVE-2023-49288,CVE-2026-33515,CVE-2023-46728,CVE-2025-54574,CVE-2021-46784,CVE-2018-19132,CVE-2023-50269,CVE-2021-33620,CVE-2019-12520,CVE-2025-62168,CVE-2019-18678,CVE-2019-12528,CVE-2019-18676,CVE-2026-32748,CVE-2021-28652,CVE-2019-18679,CVE-2018-1000024,CVE-2021-31807,CVE-2019-12523,CVE-2024-37894,CVE-2021-28651,CVE-2019-12529,CVE-2022-41318,CVE-2019-12525,CVE-2021-31808,CVE-2023-46846,CVE-2025-59362,CVE-2024-25617,CVE-2021-31806,CVE-2018-19131,CVE-2019-13345,CVE-2021-28116,CVE-2020-8450,CVE-2020-15810,CVE-2023-46724,CVE-2019-18677,CVE-2023-49285,CVE-2020-11945,CVE-2020-8517,CVE-2019-12521,CVE-2019-12522,CVE-2018-1000027,CVE-2020-24606,CVE-2026-47729,CVE-2019-12526,CVE-2020-15049,CVE-2020-8449,CVE-2026-50012,CVE-2019-12519,CVE-2023-46847,CVE-2020-14058,CVE-2020-25097,CVE-2019-12524,CVE-2020-15811",IOMARTHOSTING,iomart Hosting Limited,GB,abuse@redstation.com
+89.116.229.201,srv1811029.hstgr.cloud,,,,HOSTINGER-HOSTING,HOSTINGER UK,GB,
+89.221.127.172,balticom-127-172.balticom.lv,,,,Net-Balticom,JSC BALTICOM,LV,abuse@balticom.info
+92.112.91.82,,,,,NET-92-112-91-0-24,Private Customer,GR,report@abuseradar.com
+92.113.231.202,,,,,NET-92-113-231-0-24,Private Customer,SG,report@abuseradar.com
+92.157.20.178,lfbn-gre-1-42-178.w92-157.abo.wanadoo.fr,,,,IP2000-ADSL-BAS,POP GRE,FR,abuse@orange.fr
+93.152.221.171,,"2222,3389,5986",,,IPv4,TechTies Inc.,DE,abuse@tech-ties.net
+94.177.49.108,,,,,IT-VIRTUAL-20080814,virtual solution srl,IT,
+99.63.197.17,,,,,SBCIS-SBIS,"AT&T Enterprises, LLC",US,abuse@att.net
+99.89.81.59,,,,,SBCIS-SBIS,"AT&T Enterprises, LLC",US,abuse@att.net

@@ -1,0 +1,10 @@
+source_ip,ip_api_proxy,ip_api_hosting,ip_api_mobile,ip_api_isp,ripe_prefix,ripe_asns,reverse_ip_domain_count,reverse_ip_sample,reverse_ip_looks_like_c2,abuse_email,abuse_phone,org
+146.103.40.12,false,true,false,Regxa Company for Information Technology Ltd,146.103.40.0/22,215311,6,"akdikdy.cayeuxvinc.com; faranate.duckdns.org; lrar24comin.dtdns.org; paramanoman.duckdns.org",yes,report@abuseradar.com,+31205354444,REGXA LLC (RIPE netname NET-146-103-40-0-22)
+34.173.24.24,false,true,false,Google LLC,34.173.0.0/17,396982,1,24.24.173.34.bc.googleusercontent.com,no,google-cloud-compliance@google.com,+1-650-253-0000,Google LLC (GOOGL-2)
+99.89.81.59,false,false,true,"AT&T Enterprises, LLC",99.88.0.0/13,7018,0,none,no,abuse@att.net,+1-919-319-8167,"AT&T Enterprises, LLC (SBCIS-SBIS)"
+172.56.14.182,false,false,true,"T-Mobile USA, Inc.",172.56.14.0/23,21928,0,none,no,abuse@t-mobile.com,+1-888-662-4662,"T-Mobile USA, Inc. (TMO9)"
+172.56.198.175,false,false,true,"T-Mobile USA, Inc.",172.56.198.0/23,21928,0,none,no,abuse@t-mobile.com,+1-888-662-4662,"T-Mobile USA, Inc. (TMO9)"
+99.63.197.17,false,false,true,"AT&T Enterprises, LLC",99.56.0.0/13,7018,0,none,no,abuse@att.net,+1-919-319-8167,"AT&T Enterprises, LLC (SBCIS-SBIS)"
+172.58.243.229,false,false,true,"T-Mobile USA, Inc.",172.58.240.0/21,21928,0,none,no,abuse@t-mobile.com,+1-888-662-4662,"T-Mobile USA, Inc. (TMO9)"
+182.4.101.162,false,true,true,PT Telekomunikasi Selular Indonesia,182.4.96.0/19,23693,0,none,no,abuse@idnic.net,+62-21-5240811,PT. Telekomunikasi Selular (Telkomsel TELKOMSEL-ID)
+202.179.188.22,false,false,false,PT. Telemedia Dinamika Sarana,202.179.188.0/24,38750,0,none,no,abuse@tds.net.id,+62-21-4507447,"Telemedia Dinamika Sarana, PT (TDS-JKT-08)"
