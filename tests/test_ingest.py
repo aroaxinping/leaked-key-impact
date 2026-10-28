@@ -3,7 +3,6 @@
 from canary_token_analytics.ingest import (
     parse_alert_email,
     merge_new_events,
-    _dedup_key,
 )
 
 TOKEN_MAP = {"5792dirvqlq9rowicezsid1u4": ("5", "terraform.tfvars")}
