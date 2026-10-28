@@ -305,6 +305,93 @@ INTENT_TAXONOMY = {
         "Creates an IAM instance profile - scaffolding for privilege "
         "escalation or persistence",
     ),
+    "ListEndpoints": (
+        "reconnaissance",
+        "Enumerates SageMaker endpoints, mapping deployed ML models",
+    ),
+    "ListInferenceComponents": (
+        "reconnaissance",
+        "Enumerates SageMaker inference components, mapping ML compute",
+    ),
+    "ListHostedZones": (
+        "reconnaissance",
+        "Enumerates Route 53 hosted zones, mapping DNS infrastructure",
+    ),
+    "ListGroundStations": (
+        "reconnaissance",
+        "Enumerates AWS Ground Station resources, mapping satellite infra",
+    ),
+    "ListMissionProfiles": (
+        "reconnaissance",
+        "Enumerates Ground Station mission profiles, mapping satellite ops",
+    ),
+    "ListSatellites": (
+        "reconnaissance",
+        "Enumerates Ground Station satellites, mapping satellite resources",
+    ),
+    "TerminateInstances": (
+        "resource-abuse",
+        "Terminates EC2 instances — destructive action or cleanup after "
+        "cryptomining",
+    ),
+    "ListStateMachines": (
+        "reconnaissance",
+        "Enumerates Step Functions state machines, mapping automation",
+    ),
+    "DescribeOrganization": (
+        "reconnaissance",
+        "Reads AWS Organizations metadata, fingerprinting the org structure",
+    ),
+    "AcceptHandshake": (
+        "persistence",
+        "Accepts an AWS Organizations handshake — attempts to join or link "
+        "accounts",
+    ),
+    "CreateStack": (
+        "persistence",
+        "Creates a CloudFormation stack — infrastructure-as-code foothold",
+    ),
+    "GetLoginProfile": (
+        "reconnaissance",
+        "Reads an IAM user's console login profile, checking for password "
+        "access",
+    ),
+    "DescribeDBInstances": (
+        "reconnaissance",
+        "Enumerates RDS database instances, hunting for data stores",
+    ),
+    "DescribeRegions": (
+        "reconnaissance",
+        "Lists available AWS regions, mapping the account's footprint",
+    ),
+    "DescribeImages": (
+        "reconnaissance",
+        "Enumerates EC2 AMIs, mapping available machine images",
+    ),
+    "DescribeAccountAttributes": (
+        "reconnaissance",
+        "Reads EC2 account attributes (limits, defaults), fingerprinting",
+    ),
+    "CreateVpc": (
+        "persistence",
+        "Creates a VPC — network foothold for launching resources",
+    ),
+    "GetFoundationModelAvailability": (
+        "abuse-prep",
+        "Checks Bedrock model availability — precursor to LLMjacking",
+    ),
+    "GetAccountInformation": (
+        "reconnaissance",
+        "Reads account-level information, fingerprinting the target",
+    ),
+    "GetCostAndUsage": (
+        "reconnaissance",
+        "Reads AWS Cost Explorer data, mapping the account's spend pattern",
+    ),
+    "ListServiceQuotas": (
+        "reconnaissance",
+        "Enumerates service quotas, mapping the account's resource limits",
+    ),
     "AttachUserPolicy": (
         "defense",
         "AWS's own automated quarantine attaching a restrictive policy to "
