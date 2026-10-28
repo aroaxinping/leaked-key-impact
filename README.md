@@ -1,8 +1,8 @@
-# canary-token-analytics
+# leaked-key-impact
 
 Five fake AWS credentials were deliberately planted across public GitHub repositories. They grant zero access — their only purpose is to fire an alert the moment someone tries to use them. This project captures, enriches, classifies, and prices **every real intrusion attempt** they recorded.
 
-**1 301 events. 210 attacker IPs. 46 countries. 33 days. $6,187/day in potential damage if any key had been real.**
+**2 939 events. 503 attacker IPs. 56 countries. 85 days. $6,187/day in potential damage if any key had been real.**
 
 ## What would it cost?
 
@@ -32,9 +32,9 @@ See [`docs/cost_impact.md`](docs/cost_impact.md) for the full methodology and pr
 ## Key findings
 
 - **A leaked key is hit within minutes.** Fresh placements begin drawing automated traffic almost immediately after exposure.
-- **LLMjacking is the primary objective.** 219 events target AWS Bedrock — hijacking the account to run AI at the victim's expense.
+- **LLMjacking is the primary objective.** 531 events target AWS Bedrock — hijacking the account to run AI at the victim's expense.
 - **One coordinated operator dominates `terraform.tfvars` traffic.** 53 IPs across 23 countries, identical software build, 48/53 on hosting/proxy networks. A single operator behind a rotating proxy pool, not independent attackers.
-- **Placement matters.** `.env` draws volume (696 events), `terraform.tfvars` draws depth (465 events, concentrated kill-chain penetration).
+- **Placement matters.** `.env` draws volume (1 254 events), `terraform.tfvars` draws depth (978 events, concentrated kill-chain penetration).
 - **Privilege escalation attempts observed.** `PutUserPolicy` and `CreateUser` show hands-on operators trying to create backdoors, not just automated scanners.
 
 ## MITRE ATT&CK
@@ -43,11 +43,11 @@ Every observed API action is mapped to [MITRE ATT&CK for Cloud](https://attack.m
 
 | Tactic | Key techniques | Events |
 |---|---|---:|
-| Discovery | Cloud Infrastructure Discovery, Valid Accounts | 685 |
-| Impact | **T1496 Resource Hijacking** (LLMjacking) | 172 |
-| Credential Access | Unsecured Credentials | 124 |
-| Persistence | Create Cloud Account | 2 |
-| Privilege Escalation | Account Manipulation | 2 |
+| Discovery | Cloud Infrastructure Discovery, Valid Accounts | 2 269 |
+| Impact | **T1496 Resource Hijacking** (LLMjacking) | 369 |
+| Credential Access | Unsecured Credentials | 205 |
+| Persistence | Create Cloud Account | 19 |
+| Privilege Escalation | Account Manipulation | 17 |
 
 ## The honeypot fleet
 
@@ -55,11 +55,11 @@ Five purpose-built repositories were created on GitHub, each containing a unique
 
 | Token | Placement | Repo name | Events |
 |---|---|---|---:|
-| 1 | `.env` | social-metrics-vault | 699 |
+| 1 | `.env` | social-metrics-vault | 1 257 |
 | 2 | `.env` | homelab-s3-sync | — |
-| 3 | `config.ini` | cloud-usage-tracker | 115 |
-| 4 | `settings.yaml` | sensor-data-lake | 22 |
-| 5 | `terraform.tfvars` | infra-heartbeat | 465 |
+| 3 | `config.ini` | cloud-usage-tracker | 567 |
+| 4 | `settings.yaml` | sensor-data-lake | 137 |
+| 5 | `terraform.tfvars` | infra-heartbeat | 978 |
 
 Canary tokens generated with [canarytokens.org](https://canarytokens.org) by [Thinkst](https://thinkst.com). Each token is unique, so every alert is attributable to a specific repo and placement.
 
@@ -116,7 +116,7 @@ leaked-key-impact/
 ├── scripts/             # fetch_gmail, build_dataset, build_deep_osint
 ├── deploy/              # launchd plist for scheduled ingestion
 ├── notebooks/           # exploratory analysis and visualization
-└── tests/               # 111 unit + data-quality tests
+└── tests/               # 132 unit + data-quality tests
 ```
 
 ## Scope & limitations
