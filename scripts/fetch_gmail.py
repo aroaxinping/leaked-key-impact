@@ -14,12 +14,28 @@ First run opens a browser once to authorise read-only access and writes
 
 import base64
 import sys
+import time
 from pathlib import Path
 
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
+
+
+def _retry(fn, label="request"):
+    for attempt in range(6):
+        try:
+            return fn()
+        except HttpError as e:
+            if e.resp.status in (403, 429):
+                wait = 2 ** attempt * 10
+                print(f"  rate limited on {label}, waiting {wait}s ...")
+                time.sleep(wait)
+            else:
+                raise
+    sys.exit(f"gave up after 6 retries on {label}")
 
 from canary_token_analytics.ingest import (
     load_token_map,
@@ -73,8 +89,10 @@ def main():
 
     ids, page = [], None
     while True:
-        resp = svc.users().messages().list(
-            userId="me", q=QUERY, pageToken=page, maxResults=500).execute()
+        resp = _retry(
+            lambda p=page: svc.users().messages().list(
+                userId="me", q=QUERY, pageToken=p, maxResults=500).execute(),
+            "list messages")
         ids += [m["id"] for m in resp.get("messages", [])]
         page = resp.get("nextPageToken")
         if not page:
@@ -86,12 +104,16 @@ def main():
         cached = CACHE / f"{mid}.txt"
         if cached.exists():
             continue
-        msg = svc.users().messages().get(
-            userId="me", id=mid, format="full").execute()
+        msg = _retry(
+            lambda m=mid: svc.users().messages().get(
+                userId="me", id=m, format="full").execute(),
+            f"get {mid[:8]}")
         body = _plain_body(msg.get("payload", {}))
         if body:
             cached.write_text(body)
             fetched += 1
+            if fetched % 100 == 0:
+                print(f"  fetched {fetched} so far ...")
     print(f"fetched {fetched} new bodies (rest already cached)")
 
     token_map = load_token_map(REGISTRY)
